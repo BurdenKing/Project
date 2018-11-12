@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>EventsGo Login Page</title>
+	<meta charset="utf-8">
+	<style>
+	  body {
+	    background-color: lightyellow;
+	  }
+	  .image {
+		margin-top: 100px;
+		text-align: center;
+	  }
+	  .home {
+	    text-align: center;
+	  }
+	  .user {
+	    margin: 0 auto;
+	    margin-top: 50px;
+	    text-align: center;
+	  }
+	  .submit {
+	    margin-top: 30px;
+	    text-align: center;
+	  }
+	  .button {
+	    background-color: #bf91ff;
+		border: none;
+		cursor: pointer;
+		font-size: 20px;
+		border-radius: 12px;
+		text-align: center;
+		padding: 5px 5px;
+		margin-top: 10px;
+		width: 175px;
+	  }
+      .button:hover{
+        background-color: blueviolet;      
+      }
+	</style>
+  </head>
+  <body>
+    <h1 class='home'>Log In</h1>
+    <div class='image'>
+	  <img src='https://dummyimage.com/300'/>
+	</div>
+	<div class='user'>
+	    <input type="text" id="name" name="name" placeholder="Your Username"
+          pattern="[A-Za-z]{2,20}" required="required"/>
+		<input type="password" id="pwd" name="pwd" placeholder="Your Password" pattern="[A-Za-z]{6,20}" required="required"/>
+        <!-- SPRINT 2: interact with database somehow here to check if the login credentials are correct -->
+	</div>
+	<div class='submit'>
+		<form action="../userHome/userProfile.html">
+	      <input type="submit" class="button" value="Submit">
+	    </form>
+		<form action="./forgot.html">
+	      <input type="submit" class="button" value="Forgot Password?">
+	    </form>
+		<form action="./newUser.html">
+	      <input type="submit" class="button" value="New User?">
+	    </form>
+	</div>
+  </body>
+</html>

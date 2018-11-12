@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>EventsGo User Profile</title>
+	<meta charset="utf-8"/>
+    <style>
+      body {
+	    background-color: lightyellow;
+	    width: 100%;
+		height: 100%;
+        overflow-x: hidden;
+	  }
+      html {
+	    width: 100%;
+		height: 100%;
+	  }
+	  .home {
+	    text-align: center;
+	  }
+      .data {
+        width: 66%;
+        height: 75%;
+        float: right;
+        background-color: violet;
+        border-radius: 10%;
+        
+      }
+      .image {
+        width: 33%;
+        float: left;
+        height: 75%;
+        text-align: center;
+      }
+      #round {
+        border-radius: 50%;
+        width: 100px;
+      }
+      .persData {
+        margin-left: 15px;      
+      }
+      .editButtons {
+        position: relative;
+        text-align: center;
+      }
+      .edit {
+        width: 100px;    
+        filter: blur(1px);
+      }
+      figcaption{
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class='home'>Matt Cane's (dummy data) User Profile</h1>
+    <div class='image'>
+	  <img id="round" src='https://dummyimage.com/300'/>
+      <figcaption>(Profile pic goes here)</figcaption>
+      <a href='./events/eventHome.html'><img class='edit' src='../images/calendar.png' /></a>
+      <figcaption>Events Page</figcaption>
+      <a href='./groups/groupHome.html'><img class='edit' src='../images/group.png' /></a>
+      <figcaption>Groups Page</figcaption>
+      <a href='./edit/editPage.html'><img class='edit' src='../images/edit.png' /></a>
+      <figcaption>Edit Info</figcaption>
+	</div>
+    <div class='data'>
+      <h3 class='persData'>Personal Information</h3>
+      <ul>
+        <li class='persData'>First Name: Matt</li>
+        <li class='persData'>Last Name: Cane</li> 
+        <li class='persData'>Age: 22</li>
+        <li class='persData'>Email: CaneMatt@gmail.com</li>
+        <li class='persData'>Interests:
+          <ul>
+            <li>Watching movies with friends</li>
+            <li>Going to the park</li>
+            <li>Playing board games</li>
+            <li>Traveling</li>
+          </ul>
+        </li>
+        <li class='persData'>Groups:
+          <ol>
+            <li>York Highschool '17</li>
+            <li>Cane Family</li>
+          </ol>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <footer></footer>
+</html>
