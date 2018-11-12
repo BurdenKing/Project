@@ -2,17 +2,24 @@
 <html lang="en">
   <head>
     <title>EventsGo Login Page</title>
-	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	  body {
-	    background-color: lightyellow;
+	    background-color: lightblue;
 	  }
-	  .image {
-		margin-top: 100px;
-		text-align: center;
-	  }
+      .context {
+        border: black solid 1px;
+        margin: auto 0;
+        margin-left: 38em;
+        margin-right: 38em;
+        margin-top: 9em;
+        padding-bottom: 3em;
+        background-color: white;
+        box-shadow: 0px 0px 24px #888888;
+      }
 	  .home {
 	    text-align: center;
+        font-size: 35pt;
 	  }
 	  .user {
 	    margin: 0 auto;
@@ -23,43 +30,260 @@
 	    margin-top: 30px;
 	    text-align: center;
 	  }
-	  .button {
+	  #button {
 	    background-color: #bf91ff;
 		border: none;
 		cursor: pointer;
 		font-size: 20px;
-		border-radius: 12px;
 		text-align: center;
 		padding: 5px 5px;
 		margin-top: 10px;
-		width: 175px;
+		width: 350px;
+        height: 40px;
 	  }
-      .button:hover{
+      #button:hover{
         background-color: blueviolet;      
       }
-	</style>
+      
+      #myBtn {
+	    background-color: #bf91ff;
+		border: none;
+		cursor: pointer;
+		font-size: 20px;
+		text-align: center;
+		padding: 5px 5px;
+		margin-top: 10px;
+		width: 350px;
+        height: 40px;
+	  }
+      #myBtn:hover{
+        background-color: blueviolet;      
+      }
+      .info {
+        height: 40px;
+        width: 350px
+      }
+      #info2 {
+        margin-top: 3em;      
+      }
+      #info3 {
+        height: 150px;
+        width: 350px;
+        margin-top: 3em;
+      }
+      .check {
+        margin-top: .3em;
+        margin-left: 5.2em;
+        font-size: 12pt;
+      }
+      #forgot {
+        margin-left: 7.2em;
+      }
+      #forgotpasswordmain:hover {
+        color: blue;
+        text-decoration: none;
+      }
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 40px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        padding-bottom: 40px;
+        border: 1px solid #888;
+        width: 30%;
+      }
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .modal1 {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 80px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      .modal-content1 {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      .close1 {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close1:hover,
+      .close1:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+	  .home1 {
+	    text-align: center;
+        font-size: 35pt;
+	  }
+      .home2 {
+        font-size: 35pt;      
+      }
+	  .user1 {
+	    margin: 0 auto;
+	    margin-top: 50px;
+	    text-align: center;
+	  }
+	  .submit1 {
+	    margin-top: 30px;
+	    text-align: center;
+	  }
+	  .buttonforgot {
+	    background-color: #bf91ff;
+		border: none;
+		cursor: pointer;
+		font-size: 20px;
+		text-align: center;
+		padding: 5px 5px;
+		margin-top: 10px;
+		width: 350px;
+        height: 40px;
+	  }
+      .buttonforgot:hover{
+        background-color: blueviolet;      
+      }
+      .infoforgot {
+        height: 40px;
+        width: 350px
+      }
+      .textforgot {
+        margin-left: 9.5em;
+        margin-right: 9.2em;
+        font-size:  13pt;
+      }
+  </style>
   </head>
   <body>
-    <h1 class='home'>Log In</h1>
-    <div class='image'>
-	  <img src='https://dummyimage.com/300'/>
-	</div>
-	<div class='user'>
-	    <input type="text" id="name" name="name" placeholder="Your Username"
-          pattern="[A-Za-z]{2,20}" required="required"/>
-		<input type="password" id="pwd" name="pwd" placeholder="Your Password" pattern="[A-Za-z]{6,20}" required="required"/>
-        <!-- SPRINT 2: interact with database somehow here to check if the login credentials are correct -->
-	</div>
-	<div class='submit'>
-		<form action="../userHome/userProfile.html">
-	      <input type="submit" class="button" value="Submit">
-	    </form>
-		<form action="./forgot.html">
-	      <input type="submit" class="button" value="Forgot Password?">
-	    </form>
-		<form action="./newUser.html">
-	      <input type="submit" class="button" value="New User?">
-	    </form>
-	</div>
+    <div class="context">  
+      <h1 class='home'>EventsGo</h1>
+	    <div class='user'>
+	      <input class="info" type="text" id="name" name="name" placeholder="Username"
+          pattern="[A-Za-z]{2,20}" required="required"/> 
+		  <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+	    </div>
+        <div class="check">
+          <input class="check" type="checkbox" name="cehckbox" value="checkbox">   
+          
+          <!-- Modal for the Forgot Password Section -->
+          Remember Me 
+          <span id="forgot"><a href="#" id="forgotpasswordmain">Forgot Password?</a></span>
+          <div id="myModal1" class="modal1">
+          <div class="modal-content1">
+            <span class="close1">&times;</span>
+            <div class="context1">  
+              <h1 class='home1'>Forgot Password?</h1>
+              <p class="textforgot">Please type in your email and follow the steps sent to you in it!</p>
+	          <div class='user1'>
+	            <input class="infoforgot" type="text" id="name" name="name" placeholder="E-mail" pattern="[A-Za-z]{2,20}" required="required"/> 
+	          </div>
+	          <div class='submit1'>
+		        <form>
+	              <input type="submit" class="buttonforgot" value="RESET PASSWORD">
+                </form>
+	          </div>
+            </div>
+          </div>
+          </div>
+        
+        <!-- Login Button -->
+        </div>
+	    <div class='submit'>
+		  <form action="../userHome/userProfile.html">
+	        <input type="submit" id="button" value="LOGIN">
+          </form>
+          
+          <!-- Modal for the create an account button -->
+		  <button id="myBtn">CREATE AN ACCOUNT</button>
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h1 class="home2">Create A New Account</h1>
+              <input class="info" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
+              <input class="info" id="info2" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <input class="info" id="info2" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <!-- Interests -->
+              <input id="info3" type="text" id="name" name="name" placeholder="Interests" required="required"/>
+              <!-- Password -->    
+		      <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+              <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
+              <form id="info2">
+	            <input type="submit" id="button" value="CREATE ACCOUNT">
+              </form>
+              
+            </div>
+          </div>
+      </div>
+    </div>
+      
+    <!-- All the important Javascrip -->        
+    <script>
+      // Modal for Create a New Account
+      var modal = document.getElementById('myModal');
+      var btn = document.getElementById("myBtn");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      span.onclick = function() {
+        modal.style.display = "none"; 
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      
+      // Get the modal for forgot password
+      var modal1 = document.getElementById('myModal1');
+      var span1 = document.getElementById("forgot");
+      var span2 = document.getElementsByClassName("close1")[0]; 
+      span1.onclick = function() {
+        modal1.style.display = "block";
+      }
+      span2.onclick = function() {
+        modal1.style.display = "none"; 
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal1.style.display = "none";
+        }
+      }
+    </script>
   </body>
 </html>
