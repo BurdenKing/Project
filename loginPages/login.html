@@ -2,16 +2,15 @@
 <html lang="en">
   <head>
     <title>EventsGo Login Page</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 	  body {
 	    background-color: lightblue;
 	  }
       .context {
+        margin: auto;
         border: black solid 1px;
-        margin: auto 0;
-        margin-left: 38em;
-        margin-right: 38em;
+        width: 685px;
         margin-top: 9em;
         padding-bottom: 3em;
         background-color: white;
@@ -60,21 +59,23 @@
         background-color: blueviolet;      
       }
       .info {
+        font-size: 15pt;
         height: 40px;
         width: 350px
       }
       #info2 {
-        margin-top: 3em;      
+        margin-top: 2em;      
       }
       #info3 {
         height: 150px;
         width: 350px;
-        margin-top: 3em;
+        margin-top: 2em;
       }
       .check {
         margin-top: .3em;
-        margin-left: 5.2em;
-        font-size: 12pt;
+        margin-left: 5.7em;
+        font-size: 11pt;
+        font-family: sans-serif;
       }
       #forgot {
         margin-left: 7.2em;
@@ -97,12 +98,12 @@
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
       }
       .modal-content {
-        background-color: #fefefe;
         margin: auto;
-        padding: 20px;
-        padding-bottom: 40px;
         border: 1px solid #888;
         width: 30%;
+        background: linear-gradient(to top, white 85%, #bf91ff 15%);
+        padding: 20px;
+        padding-bottom: 50px;
       }
       .close {
         color: #aaaaaa;
@@ -120,7 +121,7 @@
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
-        padding-top: 80px; /* Location of the box */
+        padding-top: 11.5em; /* Location of the box */
         left: 0;
         top: 0;
         width: 100%; /* Full width */
@@ -133,8 +134,9 @@
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
+        padding-bottom: 3.5em;
         border: 1px solid #888;
-        width: 80%;
+        width: 55%;
       }
       .close1 {
         color: #aaaaaa;
@@ -154,10 +156,12 @@
 	  }
       .home2 {
         font-size: 35pt;      
+        margin-bottom: 1em;
+        margin-top: .4em;
       }
 	  .user1 {
 	    margin: 0 auto;
-	    margin-top: 50px;
+	    margin-top: 75px;
 	    text-align: center;
 	  }
 	  .submit1 {
@@ -179,6 +183,7 @@
         background-color: blueviolet;      
       }
       .infoforgot {
+        font-size: 15pt;
         height: 40px;
         width: 350px
       }
@@ -186,6 +191,12 @@
         margin-left: 9.5em;
         margin-right: 9.2em;
         font-size:  13pt;
+      }
+      .infousername {
+        margin-top: 1.2em;
+        font-size: 15pt;
+        height: 40px;
+        width: 350px        
       }
   </style>
   </head>
@@ -234,7 +245,7 @@
             <div class="modal-content">
               <span class="close">&times;</span>
               <h1 class="home2">Create A New Account</h1>
-              <input class="info" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
+              <input class="infousername" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
               <input class="info" id="info2" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
               <input class="info" id="info2" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
               <!-- Interests -->
@@ -245,7 +256,6 @@
               <form id="info2">
 	            <input type="submit" id="button" value="CREATE ACCOUNT">
               </form>
-              
             </div>
           </div>
       </div>
