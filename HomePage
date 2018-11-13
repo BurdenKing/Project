@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <title>HomePage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-type">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
+        
+      body {
+        background-color: lightblue;
+      }
+      .rotatingImages {
+        display: none;
+      }  
+      img {
+        height: 40em;
+        width: 100%
+      }
+      h2 {
+        font-size: 30pt;
+        padding: 25px;
+      }
+      .images {
+        margin-top: -2em;      
+      }
+      #welcome {
+        margin-top: 1em;
+        font-size: 18pt;
+        font-family: 'Spicy Rice', cursive;
+      }
+      .text {
+        text-align: center;
+      }
+      #click {
+        font-size: 18pt;      
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- Header -->
+    <header>
+      <h2>EventsGo</h2>  
+    </header>
+    
+    <!-- Images for rotating images -->
+    <div class="images">
+      <img src="../Images/events1.jpg" alt="Event 1" class="rotatingImages">
+      <img src="../Images/events2.jpg" class="rotatingImages">
+      <img src="../Images/events3.jpg" class="rotatingImages">
+      <img src="../Images/events4.jpg" class="rotatingImages">
+      <img src="../Images/events5.png" class="rotatingImages">
+    </div>
+    <div class="text">
+      <p id="welcome">Welcome</p>
+      <p id="click">Click anywhere to continue</p>
+    </div>
+      
+    <!-- JavaScript -->
+    <script>
+      var myIndex = 0;
+      rotation();
+        
+      function rotation() {
+        var i;
+        var x = document.getElementsByClassName("rotatingImages");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(rotation, 2500); // Changes every image every 2.5 seconds
+        }
+    </script>
+  </body>
+</html>
