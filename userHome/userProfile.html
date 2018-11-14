@@ -104,6 +104,13 @@
         var myUser = userNameString[1];
         window.location = "./edit/editPage.html?username=" + myUser;
       }
+      function groupPage(){
+        var myURL = window.location.href;
+        var myUserURL = myURL.split("?");
+        var userNameString = myUserURL[1].split("=");
+        var myUser = userNameString[1];
+        window.location = "./groups/groupHome.html?username=" + myUser;
+      }
     </script>
     <h1 id='home'></h1>
     <div class='image'>
@@ -111,7 +118,7 @@
       <figcaption>(Profile pic goes here)</figcaption>
       <a id='eventPage' href='./events/eventHome.html'><img class='edit' src='../images/calendar.png' /></a>
       <figcaption>Events Page</figcaption>
-      <a id='groupPage' href='./groups/groupHome.html'><img class='edit' src='../images/group.png' /></a>
+      <img class='edit' onclick="groupPage()" src="../images/group.png" />
       <figcaption>Groups Page</figcaption>
       <img class='edit' onclick="editPage()" src='../images/edit.png' />
       <figcaption>Edit Info</figcaption>

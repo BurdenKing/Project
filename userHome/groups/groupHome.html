@@ -4,38 +4,225 @@
 <html>
 <meta charset="utf-8"/>
 <head>
-    <title> Group </title>
+    <title>Group Page</title>
 <style>
-    /* css to be added in */
-    </style>
-    
-    </head>
-<body>
-    <h1>Group</h1>
-    <table>
-    <thead>
-        <tr>
-        <th> Group Name </th>
-        <th> Members </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td><a href = "Work"> Work </a> </td>
-        <td>20   </td>
-        </tr>
-        <tr>
-        <td><a href = "School"> School </a></td>
-        <td>20 </td>
-        </tr>
-        </tbody>
-        
+    body {
+      background-color: #1F2833;   
+    }
+    h1 {
+      color: #66FCF1;
+      font-size: 3em;
+      text-align: center;
+    }
+    .button:hover {
+      background-color: #45A29E;
+      cursor: pointer;
+    }
+    .button {
+      background-color: #0B0C10;
+      color: #C5C6C7;
+      border: 2px solid #66FCF1;
+      margin-top: 10px;
+      width: 350px;
+      height: 40px;
+    }
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .modal-content {
+      color: #C5C6C7;
+      background-color: #0B0C10;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      text-align: center;
+    }
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-    </table>
+    .close:hover, .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    div input {
+      width: 80%;
+    }
+    .content{
+      height: 40px;
+      width: 350px;
+      font-size: 15px;
+    }
+    #add {
+      width: 350px;
+      height: 40px;
+      text-align: center;
+      margin-top: 2em;
+    }
+    .home2 {
+      font-size: 35pt; 
+    }
+    #popup1{
+      text-align: left;
+    }
+    .groupList {
+      font-size: 13pt;
+    }
+    .buttons{
+      width: 300px;
+    }
+    #groups{
+      font-size: 15pt;
+      margin-top: 2em;
+      margin-bottom: 2em;
+      color: #C5C6C7;
+    }
+</style>
     
-    <footer>
-        
-    <a href = "HomePage.html">Home Page</a>
-    </footer>
-    </body>
-    </html>
+</head>
+<body>
+  <h1>Your Groups</h1>
+  <div id="myModal" class="modal">
+    <div class="modal-content" id="popup">
+      <span class="close">&times;</span>
+      <h1 class="home2">Create a New Group</h1>
+      <h3>Your group name:</h3>
+      <input class="content" id="groupName" type="text" name="name" placeholder="Group Name" required="required"/>
+      <h3>Enter username here:</h3>
+      <input class="content" id="invUser" type="text" name="name" placeholder="Username"/>
+      <input type="submit" id="add" class="button" value="ADD THIS USER">
+      <h3>Members of this group:</h3>
+      <ol id="popup1"></ol>
+      <input type="submit" id="submit" class="button" value="SUBMIT GROUP">
+    </div>
+  </div>
+  <div class='buttons'>
+    <input type="submit" id="create" class="button" value="CREATE A NEW GROUP" onclick="createGroup()">
+    <div id="groups"></div>
+    <input type="submit" id="back" class="button" value="BACK HOME" onclick="goBack()">
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script>
+    var myURL = window.location.href;
+    var myUserURL = myURL.split("?");
+    var userNameString = myUserURL[1].split("=");
+    var myUser = userNameString[1];
+    var myPop = document.getElementById('popup1');
+    var list = document.createElement('li');
+    list.appendChild(document.createTextNode(myUser + ", Creator of Group"));
+    list.setAttribute("class", "groupList");
+    myPop.append(list);
+    var config = {
+      apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+      authDomain: "comp1930project.firebaseapp.com",
+      databaseURL: "https://comp1930project.firebaseio.com",
+      projectId: "comp1930project",
+      storageBucket: "comp1930project.appspot.com",
+      messagingSenderId: "678746640473"
+    };
+    firebase.initializeApp(config);
+    
+    var groupName = document.getElementById("groups");
+    
+    
+    var root = firebase.database().ref().child('usernames');
+    var modal = document.getElementById('myModal');
+    var createBtn = document.getElementById('create');
+    createBtn.onclick = function(){
+      modal.style.display = "block";
+    }
+    var closeSp = document.getElementsByClassName('close')[0];
+    closeSp.onclick = function(){
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    document.getElementById("add").onclick = function(){
+      var inputUser = document.getElementById("invUser").value;
+      var userFoundDB = "false";
+      var userFoundList = false;
+      var namesList = document.getElementsByClassName("groupList");
+      for (var i = 0; i < namesList.length; i++){
+        var checkNameFull = namesList[i].innerHTML;
+        var checkNameDel = checkNameFull.split(",");
+        var checkName = checkNameDel[0];
+        if(inputUser === checkName){
+          userFoundList = true;
+        }
+      }
+      if(!userFoundList){
+        root.on('value', function(snap){
+          snap.forEach(function(childNodes){
+            var tempUser = childNodes.val().username;
+            var tempFirst = childNodes.val().fName;
+            var tempLast = childNodes.val().lName;
+          
+            if (inputUser === tempUser){
+              var myPop = document.getElementById('popup1');
+              var list = document.createElement('li');
+              list.appendChild(document.createTextNode(inputUser + ", " + tempFirst + " " + tempLast));
+              list.setAttribute("class", "groupList");
+              myPop.append(list);
+              userFoundDB = "true";
+            }
+          })
+          if(userFoundDB == "false"){
+            alert("Username not found!");
+          }
+        })
+      } else {
+        alert("Username already in list!");
+      }
+      document.getElementById("invUser").value = "";
+    }
+    document.getElementById("submit").onclick = function(){
+      var groupName = document.getElementById("groupName").value;
+      var namesList = document.getElementsByClassName("groupList");
+      var rootGroup = firebase.database().ref().child('groups');
+      var groupString = "";
+      for (var i = 0; i < namesList.length; i++){
+        var checkNameFull = namesList[i].innerHTML;
+        var checkNameDel = checkNameFull.split(",");
+        var checkName = checkNameDel[0];
+        groupString = groupString + checkName + ",";
+      }
+      if(groupName == ""){
+        alert("Please enter a group name");
+      }
+      else{
+        rootGroup.push().set({
+          groupName: groupName,
+          groupMembers: groupString
+          
+        })
+        modal.style.display = "none";
+      }
+    }
+    function goBack(){
+      var myURL = window.location.href;
+      var myUserURL = myURL.split("?");
+      var userNameString = myUserURL[1].split("=");
+      var myUser = userNameString[1];
+      window.location = "../userProfile.html?username=" + myUser;
+    }
+  </script>
+</body>
+</html>
