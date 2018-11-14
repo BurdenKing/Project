@@ -3,23 +3,24 @@
   <head>
     <title>EventsGo Login Page</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<style>
 	  body {
-	    background-color: lightblue;
+	    background-color: #1F2833;
 	  }
       .context {
         margin: auto;
-        border: black solid 1px;
+        border: #66FCF1 solid 2px;
         width: 685px;
         margin-top: 9em;
         padding-bottom: 3em;
+        background-color: #1F2833;
+        box-shadow: 10px 10px 24px #0B0C10;
         background-color: white;
-        box-shadow: 0px 0px 24px #888888;
       }
 	  .home {
 	    text-align: center;
         font-size: 35pt;
+        color: #66FCF1;
 	  }
 	  .user {
 	    margin: 0 auto;
@@ -30,9 +31,10 @@
 	    margin-top: 30px;
 	    text-align: center;
 	  }
-	  #button, #loginButton {
-	    background-color: #bf91ff;
-		border: none;
+	  #button {
+	    background-color: #0B0C10;
+		border: 2px solid #66FCF1;
+        color: #C5C6C7;
 		cursor: pointer;
 		font-size: 20px;
 		text-align: center;
@@ -41,27 +43,14 @@
 		width: 350px;
         height: 40px;
 	  }
-      #button:hover, #loginButton:hover{
-        background-color: blueviolet;      
+      #button:hover{
+        background-color: #45A29E;      
       }
-        #createButton {
-            background-color: #bf91ff;
-		border: none;
-		cursor: pointer;
-		font-size: 20px;
-		text-align: center;
-		padding: 5px 5px;
-		margin-top: 10px;
-		width: 350px;
-        height: 40px;
-        }
-        #createButton:hover{
-            background-color: blueviolet; 
-        }
       
       #myBtn {
-	    background-color: #bf91ff;
-		border: none;
+	    background-color: #0B0C10;
+        border: 2px solid #66FCF1;
+        color: #C5C6C7;
 		cursor: pointer;
 		font-size: 20px;
 		text-align: center;
@@ -71,17 +60,17 @@
         height: 40px;
 	  }
       #myBtn:hover{
-        background-color: blueviolet;      
+        background-color: #45A29E;      
       }
-      .info, .infoF, .infoL, .infoI, .infoP {
+      .info {
         font-size: 15pt;
         height: 40px;
         width: 350px
       }
-      #info2, #inputFirst, #inputLast, #inputPass, #pwd1 {
+      #info2 {
         margin-top: 2em;      
       }
-      #info3, #interest {
+      #info3 {
         height: 150px;
         width: 350px;
         margin-top: 2em;
@@ -116,7 +105,7 @@
         margin: auto;
         border: 1px solid #888;
         width: 30%;
-        background: linear-gradient(to top, white 85%, #bf91ff 15%);
+        background: white;
         padding: 20px;
         padding-bottom: 50px;
       }
@@ -168,11 +157,14 @@
 	  .home1 {
 	    text-align: center;
         font-size: 35pt;
+        color: #66FCF1;
 	  }
       .home2 {
         font-size: 35pt;      
         margin-bottom: 1em;
         margin-top: .4em;
+        color: #66FCF1;
+        text-align: center;
       }
 	  .user1 {
 	    margin: 0 auto;
@@ -184,8 +176,9 @@
 	    text-align: center;
 	  }
 	  .buttonforgot {
-	    background-color: #bf91ff;
-		border: none;
+	    background-color: #0B0C10;
+		border: 2px solid #66FCF1;
+        color: #C5C6C7;
 		cursor: pointer;
 		font-size: 20px;
 		text-align: center;
@@ -195,7 +188,7 @@
         height: 40px;
 	  }
       .buttonforgot:hover{
-        background-color: blueviolet;      
+        background-color: #45A29E;         
       }
       .infoforgot {
         font-size: 15pt;
@@ -213,15 +206,15 @@
         height: 40px;
         width: 350px        
       }
-    </style>
+  </style>
   </head>
   <body>
     <div class="context">  
       <h1 class='home'>EventsGo</h1>
 	    <div class='user'>
-	      <input class="info" type="text" id="userName1" name="name" placeholder="Username"
+	      <input class="info" type="text" id="name" name="name" placeholder="Username"
           pattern="[A-Za-z]{2,20}" required="required"/> 
-		  <input class="info" id="pwd1" type="password" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+		  <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
 	    </div>
         <div class="check">
           <input class="check" type="checkbox" name="cehckbox" value="checkbox">   
@@ -250,8 +243,9 @@
         <!-- Login Button -->
         </div>
 	    <div class='submit'>
-		  
-	      <input type="submit" id="loginButton" value="LOGIN">
+		  <form action="../userHome/userProfile.html">
+	        <input type="submit" id="button" value="LOGIN">
+          </form>
           
           <!-- Modal for the create an account button -->
 		  <button id="myBtn">CREATE AN ACCOUNT</button>
@@ -259,16 +253,16 @@
             <div class="modal-content">
               <span class="close">&times;</span>
               <h1 class="home2">Create A New Account</h1>
-              <input class="infousername" id="inputUser" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
-              <input class="infoF" id="inputFirst" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
-              <input class="infoL" id="inputLast" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <input class="infousername" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
+              <input class="info" id="info2" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <input class="info" id="info2" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
               <!-- Interests -->
-              <input class="infoI" id="interest" type="text" id="name" name="name" placeholder="Interests" required="required"/>
+              <input id="info3" type="text" id="name" name="name" placeholder="Interests" required="required"/>
               <!-- Password -->    
-		      <input class="infoP" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+		      <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
               <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
               <form id="info2">
-	            <input type="submit" id="createButton" id="button" value="CREATE ACCOUNT">
+	            <input type="submit" id="button" value="CREATE ACCOUNT">
               </form>
             </div>
           </div>
