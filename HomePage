@@ -7,18 +7,23 @@
       @import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
         
       body {
-        background-color: lightblue;
+        background-color: #1F2833;
+        cursor: pointer;
       }
       .rotatingImages {
         display: none;
       }  
+        
       img {
         height: 40em;
         width: 100%
       }
-      h2 {
-        font-size: 30pt;
-        padding: 25px;
+      h1 {
+        text-align: center;
+        color: #66FCF1;
+        font-size: 5em;
+        margin-top: .5em;
+        font-weight: 900;
       }
       .images {
         margin-top: -2em;      
@@ -27,20 +32,22 @@
         margin-top: 1em;
         font-size: 18pt;
         font-family: 'Spicy Rice', cursive;
+        color: #66FCF1;
       }
       .text {
         text-align: center;
+        color: white;
       }
       #click {
         font-size: 18pt;      
+        margin-top: -15px;
       }
     </style>
   </head>
-  
-  <body>
+  <body id="body">
     <!-- Header -->
     <header>
-      <h2>EventsGo</h2>  
+      <h1>EventsGo</h1>  
     </header>
     
     <!-- Images for rotating images -->
@@ -70,8 +77,12 @@
         myIndex++;
         if (myIndex > x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
-        setTimeout(rotation, 2500); // Changes every image every 2.5 seconds
+        setTimeout(rotation, 3000); // Changes every image every 2.5 seconds
         }
+        
+        document.getElementById("body").onclick = function() {
+        window.location.href = "www.google.ca";
+        };
     </script>
   </body>
 </html>
