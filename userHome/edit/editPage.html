@@ -3,7 +3,139 @@
   <head>
     <title></title>
 	<meta charset="utf-8"/>
+    <style>
+      body {
+	    background-color: lightblue;
+	    width: 100%;
+		height: 100%;
+        overflow-x: hidden;
+	  }
+      #backButton{
+	    background-color: #bf91ff;
+		border: none;
+		cursor: pointer;
+		font-size: 20px;
+		text-align: center;
+		padding: 5px 5px;
+		margin-top: 10px;
+		width: 350px;
+        height: 30px;
+	  }
+      #backButton:hover{
+        background-color: blueviolet;      
+      }
+      #back {
+        margin-top: 3em;
+        text-align: center;
+      }
+      #submit{
+        margin-top: 1em;
+        text-align: center;      
+      }
+      #content {
+        margin: 0 auto; 
+        width: 500px;
+        text-align: center;
+        
+      }
+      .info {
+        margin-top: 2em;
+        margin-left: 10px;
+        font-size: 15pt;
+        height: 40px;
+        width: 350px;
+        display: inline-block;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+      <h2>Edit User Information</h2>
+      <div id="content">
+        Current First Name: <input class="info" id="inputFirst" type="text" id="name" name="name" pattern="[A-Za-z]{2,20}" required="required"/>
+        Current Last Name: <input class="info" id="inputLast" type="text" id="name" name="name" pattern="[A-Za-z]{2,20}" required="required"/>
+        <!-- Interests -->
+        Current Interests: <input class="info" id="interest" type="text" id="name" name="name" required="required"/>
+        <!-- Password -->    
+        New Password: <input class="info" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+        Confirm Password: <input class="info" id="inputPass2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
+      </div>
+      <div id="back">
+        <input type="submit" id="backButton" value="BACK TO USER PROFILE" onclick="goBack()">
+      </div>
+      <div id="submit">
+        <input type="submit" id="backButton" value="SUBMIT" onclick="readData()">
+      </div>
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+          authDomain: "comp1930project.firebaseapp.com",
+          databaseURL: "https://comp1930project.firebaseio.com",
+          projectId: "comp1930project",
+          storageBucket: "comp1930project.appspot.com",
+          messagingSenderId: "678746640473"
+        };
+        firebase.initializeApp(config);
+        var myURL = window.location.href;
+        var myUserURL = myURL.split("?");
+        var userNameString = myUserURL[1].split("=");
+        var myUser = userNameString[1];
+        //username string is saved in myUser variable
+        var root = firebase.database().ref().child('usernames');
+        root.on('value', function(snap){
+          snap.forEach(function(childNodes){
+            var tempUser = childNodes.val().username;
+            if (tempUser === myUser){
+            //alert(childNodes.val().fName);
+              var myFirst = childNodes.val().fName;
+              var myLast = childNodes.val().lName;
+              var int = childNodes.val().interest;
+              document.getElementById("inputFirst").placeholder = myFirst;
+              document.getElementById("inputLast").placeholder = myLast;
+              document.getElementById("interest").placeholder = int;
+            }
+          })
+        })
+        function goBack(){
+          var myURL = window.location.href;
+          var myUserURL = myURL.split("?");
+          var userNameString = myUserURL[1].split("=");
+          var myUser = userNameString[1];
+          window.location = "../userProfile.html?username=" + myUser;
+        }
+        function readData() {
+          var myURL = window.location.href;
+          var myUserURL = myURL.split("?");
+          var userNameString = myUserURL[1].split("=");
+          var myUser = userNameString[1];
+          
+          root.on('value', function(snap){
+            snap.forEach(function(childNodes){
+              var tempUser = childNodes.val().username;
+              if (tempUser === myUser){
+                var newFirst = document.getElementById("inputFirst").value;
+                var newLast = document.getElementById("inputLast").value;
+                var newInt = document.getElementById("interest").value;
+                var newPwd = document.getElementById("inputPass").value;
+                if (newFirst !== ""){
+                    childNodes.ref.update({fName: newFirst});
+                }
+                if (newLast !== ""){
+                    childNodes.ref.update({lName: newLast});
+                }
+                if (newInt !== ""){
+                    childNodes.ref.update({interest: newInt});
+                }
+                if (newPwd !== ""){
+                    childNodes.ref.update({password: newPwd});
+                }
+              }
+            })
+          })
+          window.location = "../userProfile.html?username=" + myUser;      
+        }  
+      </script>      
+  </body>
   <footer></footer>
 </html>

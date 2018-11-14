@@ -14,12 +14,12 @@
 	    width: 100%;
 		height: 100%;
 	  }
-	  .home {
+	  #home {
 	    text-align: center;
 	  }
       .data {
         width: 66%;
-        height: 75%;
+        height: 50%;
         float: right;
         background-color: violet;
         border-radius: 10%;
@@ -47,6 +47,7 @@
       .edit {
         width: 100px;    
         filter: blur(1px);
+        cursor: pointer;
       }
       .edit:hover {
         background-color: violet;
@@ -57,32 +58,70 @@
     </style>
   </head>
   <body>
-    <h1 class='home'>Matt Cane's (dummy data) User Profile</h1>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+        authDomain: "comp1930project.firebaseapp.com",
+        databaseURL: "https://comp1930project.firebaseio.com",
+        projectId: "comp1930project",
+        storageBucket: "comp1930project.appspot.com",
+        messagingSenderId: "678746640473"
+      };
+      firebase.initializeApp(config);
+      var myURL = window.location.href;
+      var myUserURL = myURL.split("?");
+      var userNameString = myUserURL[1].split("=");
+      var myUser = userNameString[1];
+      //username string is saved in myUser variable
+      var root = firebase.database().ref().child('usernames');
+      root.on('value', function(snap){
+        snap.forEach(function(childNodes){
+          var tempUser = childNodes.val().username;
+          if (tempUser === myUser){
+            //alert(childNodes.val().fName);
+            var myFirst = childNodes.val().fName;
+            var myLast = childNodes.val().lName;
+            var int = childNodes.val().interest;
+            document.getElementById("fName").innerHTML = "<b>First Name</b> = " + myFirst;
+            document.getElementById("lName").innerHTML = "<b>Last Name</b> = " + myLast;
+            document.getElementById("interest").innerHTML = "<b>Interests</b> = " + int;
+            document.getElementById("home").innerHTML = "Hello " + tempUser + ", welcome to EventsGo."
+          }
+        }) 
+      })
+      $('#eventPage').click(function(){
+        
+      })
+      $('#groupPage').click(function(){
+        
+      })
+      function editPage(){
+        var myURL = window.location.href;
+        var myUserURL = myURL.split("?");
+        var userNameString = myUserURL[1].split("=");
+        var myUser = userNameString[1];
+        window.location = "./edit/editPage.html?username=" + myUser;
+      }
+    </script>
+    <h1 id='home'></h1>
     <div class='image'>
 	  <img id="round" src='https://dummyimage.com/300'/>
       <figcaption>(Profile pic goes here)</figcaption>
-      <a href='./events/eventHome.html'><img class='edit' src='../images/calendar.png' /></a>
+      <a id='eventPage' href='./events/eventHome.html'><img class='edit' src='../images/calendar.png' /></a>
       <figcaption>Events Page</figcaption>
-      <a href='./groups/groupHome.html'><img class='edit' src='../images/group.png' /></a>
+      <a id='groupPage' href='./groups/groupHome.html'><img class='edit' src='../images/group.png' /></a>
       <figcaption>Groups Page</figcaption>
-      <a href='./edit/editPage.html'><img class='edit' src='../images/edit.png' /></a>
+      <img class='edit' onclick="editPage()" src='../images/edit.png' />
       <figcaption>Edit Info</figcaption>
 	</div>
     <div class='data'>
       <h3 class='persData'>Personal Information</h3>
       <ul>
-        <li class='persData'>First Name: Matt</li>
-        <li class='persData'>Last Name: Cane</li> 
-        <li class='persData'>Age: 22</li>
-        <li class='persData'>Email: CaneMatt@gmail.com</li>
-        <li class='persData'>Interests:
-          <ul>
-            <li>Watching movies with friends</li>
-            <li>Going to the park</li>
-            <li>Playing board games</li>
-            <li>Traveling</li>
-          </ul>
-        </li>
+        <li class='persData' id="fName"></li>
+        <li class='persData' id="lName"></li> 
+        <li class='persData' id="interest"></li>
         <li class='persData'>Groups:
           <ol>
             <li>York Highschool '17</li>

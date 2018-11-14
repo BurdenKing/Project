@@ -3,6 +3,7 @@
   <head>
     <title>EventsGo Login Page</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<style>
 	  body {
 	    background-color: lightblue;
@@ -29,7 +30,7 @@
 	    margin-top: 30px;
 	    text-align: center;
 	  }
-	  #button {
+	  #button, #loginButton {
 	    background-color: #bf91ff;
 		border: none;
 		cursor: pointer;
@@ -40,9 +41,23 @@
 		width: 350px;
         height: 40px;
 	  }
-      #button:hover{
+      #button:hover, #loginButton:hover{
         background-color: blueviolet;      
       }
+        #createButton {
+            background-color: #bf91ff;
+		border: none;
+		cursor: pointer;
+		font-size: 20px;
+		text-align: center;
+		padding: 5px 5px;
+		margin-top: 10px;
+		width: 350px;
+        height: 40px;
+        }
+        #createButton:hover{
+            background-color: blueviolet; 
+        }
       
       #myBtn {
 	    background-color: #bf91ff;
@@ -58,15 +73,15 @@
       #myBtn:hover{
         background-color: blueviolet;      
       }
-      .info {
+      .info, .infoF, .infoL, .infoI, .infoP {
         font-size: 15pt;
         height: 40px;
         width: 350px
       }
-      #info2 {
+      #info2, #inputFirst, #inputLast, #inputPass, #pwd1 {
         margin-top: 2em;      
       }
-      #info3 {
+      #info3, #interest {
         height: 150px;
         width: 350px;
         margin-top: 2em;
@@ -198,15 +213,15 @@
         height: 40px;
         width: 350px        
       }
-  </style>
+    </style>
   </head>
   <body>
     <div class="context">  
       <h1 class='home'>EventsGo</h1>
 	    <div class='user'>
-	      <input class="info" type="text" id="name" name="name" placeholder="Username"
+	      <input class="info" type="text" id="userName1" name="name" placeholder="Username"
           pattern="[A-Za-z]{2,20}" required="required"/> 
-		  <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+		  <input class="info" id="pwd1" type="password" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
 	    </div>
         <div class="check">
           <input class="check" type="checkbox" name="cehckbox" value="checkbox">   
@@ -235,9 +250,8 @@
         <!-- Login Button -->
         </div>
 	    <div class='submit'>
-		  <form action="../userHome/userProfile.html">
-	        <input type="submit" id="button" value="LOGIN">
-          </form>
+		  
+	      <input type="submit" id="loginButton" value="LOGIN">
           
           <!-- Modal for the create an account button -->
 		  <button id="myBtn">CREATE AN ACCOUNT</button>
@@ -245,23 +259,23 @@
             <div class="modal-content">
               <span class="close">&times;</span>
               <h1 class="home2">Create A New Account</h1>
-              <input class="infousername" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
-              <input class="info" id="info2" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
-              <input class="info" id="info2" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <input class="infousername" id="inputUser" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
+              <input class="infoF" id="inputFirst" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <input class="infoL" id="inputLast" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
               <!-- Interests -->
-              <input id="info3" type="text" id="name" name="name" placeholder="Interests" required="required"/>
+              <input class="infoI" id="interest" type="text" id="name" name="name" placeholder="Interests" required="required"/>
               <!-- Password -->    
-		      <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+		      <input class="infoP" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
               <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
               <form id="info2">
-	            <input type="submit" id="button" value="CREATE ACCOUNT">
+	            <input type="submit" id="createButton" id="button" value="CREATE ACCOUNT">
               </form>
             </div>
           </div>
       </div>
     </div>
       
-    <!-- All the important Javascrip -->        
+    <!-- All the important Javascript -->        
     <script>
       // Modal for Create a New Account
       var modal = document.getElementById('myModal');
@@ -294,6 +308,57 @@
           modal1.style.display = "none";
         }
       }
+    </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+        authDomain: "comp1930project.firebaseapp.com",
+        databaseURL: "https://comp1930project.firebaseio.com",
+        projectId: "comp1930project",
+        storageBucket: "comp1930project.appspot.com",
+        messagingSenderId: "678746640473"
+      };
+      firebase.initializeApp(config);
+      var root = firebase.database().ref().child('usernames');
+      $('#createButton').click(function(){
+        var myUser = $('#inputUser').val();
+        var myFirst = $('#inputFirst').val();
+        var myLast = $('#inputLast').val();
+        var myInt = $('#interest').val();
+        var myPwd = $('#inputPass').val();
+        root.push().set({
+          username: myUser,
+          fName: myFirst,
+          lName: myLast,
+          interest: myInt,
+          password: myPwd
+        })
+      });
+      $('#loginButton').click(function(){
+        var userFound = false;
+        var inputUser = $('#userName1').val();
+        var inputPass = $('#pwd1').val();
+        
+        root.on('value', function(snap){
+          snap.forEach(function(childNodes){
+            //childNodes.val().fName has the collection of first names
+            var tempUser = childNodes.val().username;
+            var tempPass = childNodes.val().password;
+            if (inputUser === tempUser && inputPass === tempPass){
+                userFound = true;
+            }
+          })
+          if (userFound){
+            window.location = "../userHome/userProfile.html?username=" + inputUser;
+          }
+          else {
+            alert("Username/Password not found!");    
+          }
+        })
+      });
     </script>
   </body>
 </html>
