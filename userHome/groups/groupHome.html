@@ -91,6 +91,7 @@
       margin-top: 2em;
       margin-bottom: 2em;
       color: #C5C6C7;
+      background-color: #0B0C10; 
     }
 </style>
     
@@ -138,8 +139,25 @@
     firebase.initializeApp(config);
     
     var groupName = document.getElementById("groups");
-    
-    
+    var dispGroup = firebase.database().ref().child('groups');
+    dispGroup.on('value', function(snap){
+      snap.forEach(function(childNodes){
+        var memberList = childNodes.val().groupMembers;
+        var groupCreate = childNodes.val().groupCreate;
+        var groupName = childNodes.val().groupName;
+        var tempDel1 = memberList.split(",");
+        var inGroup = false;
+        for(var j = 0; j < tempDel1.length - 1; j++){
+          if(myUser === tempDel1[j]){
+            inGroup = true;
+            break;
+          }
+        }
+        if(inGroup){
+          
+        }
+      })
+    })
     var root = firebase.database().ref().child('usernames');
     var modal = document.getElementById('myModal');
     var createBtn = document.getElementById('create');
@@ -210,8 +228,8 @@
       else{
         rootGroup.push().set({
           groupName: groupName,
-          groupMembers: groupString
-          
+          groupMembers: groupString,
+          groupCreate: myUser
         })
         modal.style.display = "none";
       }

@@ -3,6 +3,7 @@
   <head>
     <title>EventsGo Login Page</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<style>
 	  body {
 	    background-color: #1F2833;
@@ -31,7 +32,7 @@
 	    margin-top: 30px;
 	    text-align: center;
 	  }
-	  #button {
+	  #button, #loginButton {
 	    background-color: #0B0C10;
 		border: 2px solid #66FCF1;
         color: #C5C6C7;
@@ -43,7 +44,7 @@
 		width: 350px;
         height: 40px;
 	  }
-      #button:hover{
+      #button:hover, #loginButton:hover {
         background-color: #45A29E;      
       }
       
@@ -67,7 +68,7 @@
         height: 40px;
         width: 350px
       }
-      #info2 {
+      #info2, #pwd1 {
         margin-top: 2em;      
       }
       #info3 {
@@ -212,9 +213,9 @@
     <div class="context">  
       <h1 class='home'>EventsGo</h1>
 	    <div class='user'>
-	      <input class="info" type="text" id="name" name="name" placeholder="Username"
+	      <input class="info" id="userName1" type="text" id="name" name="name" placeholder="Username"
           pattern="[A-Za-z]{2,20}" required="required"/> 
-		  <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+		  <input class="info" id="pwd1" type="password"  name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
 	    </div>
         <div class="check">
           <input class="check" type="checkbox" name="cehckbox" value="checkbox">   
@@ -243,9 +244,7 @@
         <!-- Login Button -->
         </div>
 	    <div class='submit'>
-		  <form action="../userHome/userProfile.html">
-	        <input type="submit" id="button" value="LOGIN">
-          </form>
+	      <input type="submit" id="loginButton" value="LOGIN">
           
           <!-- Modal for the create an account button -->
 		  <button id="myBtn">CREATE AN ACCOUNT</button>
