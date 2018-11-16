@@ -4,8 +4,20 @@
 <html>
 <meta charset="utf-8"/>
 <head>
-    <title>Group Page</title>
-<style>
+  <title>Group Page</title>
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+      authDomain: "comp1930project.firebaseapp.com",
+      databaseURL: "https://comp1930project.firebaseio.com",
+      projectId: "comp1930project",
+      storageBucket: "comp1930project.appspot.com",
+      messagingSenderId: "678746640473"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <style>
     body {
       background-color: #1F2833;   
     }
@@ -13,6 +25,9 @@
       color: #66FCF1;
       font-size: 3em;
       text-align: center;
+    }
+    h2{
+      color: #C5C6C7;
     }
     .button:hover {
       background-color: #45A29E;
@@ -39,7 +54,7 @@
       background-color: rgb(0,0,0); /* Fallback color */
       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
-    .modal-content {
+    .modal-content, .edit-content {
       color: #C5C6C7;
       background-color: #0B0C10;
       margin: 0 auto;
@@ -88,16 +103,29 @@
     }
     #groups{
       font-size: 15pt;
-      margin-top: 2em;
-      margin-bottom: 2em;
-      color: #C5C6C7;
-      background-color: #0B0C10; 
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    .groups1{
+      font-size: 15pt;
+      margin-top: 1em;
+      padding: 10px;
+      margin-bottom: 1em;
+      color: black;
+      background-color: #66FCF1; 
+      border: 2px solid #0B0C10;
+      width: 500px;
+    }
+    .groups1:hover {
+      background-color: #45A29E;
+      cursor: pointer;
     }
 </style>
     
 </head>
 <body>
   <h1>Your Groups</h1>
+  <h2>Click a group to edit its members</h2>
   <div id="myModal" class="modal">
     <div class="modal-content" id="popup">
       <span class="close">&times;</span>
@@ -112,12 +140,18 @@
       <input type="submit" id="submit" class="button" value="SUBMIT GROUP">
     </div>
   </div>
+  <div id="editModal" class="modal">
+    <div class="edit-content" id="popupEdit">
+      <span class="close">&times;</span>
+      <h1 class="home2">Edit this group</h1>
+    </div>
+  </div>
   <div class='buttons'>
     <input type="submit" id="create" class="button" value="CREATE A NEW GROUP" onclick="createGroup()">
     <div id="groups"></div>
     <input type="submit" id="back" class="button" value="BACK HOME" onclick="goBack()">
   </div>
-  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  
   <script>
     var myURL = window.location.href;
     var myUserURL = myURL.split("?");
@@ -128,24 +162,18 @@
     list.appendChild(document.createTextNode(myUser + ", Creator of Group"));
     list.setAttribute("class", "groupList");
     myPop.append(list);
-    var config = {
-      apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
-      authDomain: "comp1930project.firebaseapp.com",
-      databaseURL: "https://comp1930project.firebaseio.com",
-      projectId: "comp1930project",
-      storageBucket: "comp1930project.appspot.com",
-      messagingSenderId: "678746640473"
-    };
-    firebase.initializeApp(config);
     
-    var groupName = document.getElementById("groups");
-    var dispGroup = firebase.database().ref().child('groups');
+    //enter groups the person is in here
+    //add the data to id = "#groups" 
+    var groupNameList = document.getElementById("groups");
+    var dispGroup = firebase.database().ref().child('groups');   
+    var count = 0;
     dispGroup.on('value', function(snap){
       snap.forEach(function(childNodes){
         var memberList = childNodes.val().groupMembers;
         var groupCreate = childNodes.val().groupCreate;
         var groupName = childNodes.val().groupName;
-        var tempDel1 = memberList.split(",");
+        var tempDel1 = memberList.split(", ");
         var inGroup = false;
         for(var j = 0; j < tempDel1.length - 1; j++){
           if(myUser === tempDel1[j]){
@@ -154,7 +182,20 @@
           }
         }
         if(inGroup){
-          
+          count = count + 1;
+          var myDiv = document.createElement("div");
+          myDiv.setAttribute("class", "groups1");
+          myDiv.setAttribute("id", "group" + count);
+          myDiv.setAttribute("onclick", "processGroup('" + groupName + "')");
+          var nodeGroupName = document.createTextNode("Group " + count + ": " + groupName);
+          var nodeCreator = document.createTextNode("Group Creator: " + groupCreate);
+          var nodeMembers = document.createTextNode("Group Members: " + memberList);
+          myDiv.appendChild(nodeGroupName);
+          myDiv.appendChild(document.createElement("br"));
+          myDiv.appendChild(nodeCreator);
+          myDiv.appendChild(document.createElement("br"));
+          myDiv.appendChild(nodeMembers);
+          groupNameList.append(myDiv);
         }
       })
     })
@@ -166,7 +207,17 @@
     }
     var closeSp = document.getElementsByClassName('close')[0];
     closeSp.onclick = function(){
-      modal.style.display = "none";
+      modal.style.display = "none";  
+    }
+    var closeSp1 = document.getElementsByClassName('close')[1];
+    closeSp1.onclick = function(){
+      var editmodal = document.getElementById('editModal');
+      editmodal.style.display = "none";
+      var myURL = window.location.href;
+      var myUserURL = myURL.split("?");
+      var userNameString = myUserURL[1].split("=");
+      var myUser = userNameString[1];
+      window.location = "../groups/groupHome.html?username=" + myUser;
     }
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -212,6 +263,10 @@
       document.getElementById("invUser").value = "";
     }
     document.getElementById("submit").onclick = function(){
+      var myURL = window.location.href;
+      var myUserURL = myURL.split("?");
+      var userNameString = myUserURL[1].split("=");
+      var myUser = userNameString[1];
       var groupName = document.getElementById("groupName").value;
       var namesList = document.getElementsByClassName("groupList");
       var rootGroup = firebase.database().ref().child('groups');
@@ -220,7 +275,12 @@
         var checkNameFull = namesList[i].innerHTML;
         var checkNameDel = checkNameFull.split(",");
         var checkName = checkNameDel[0];
-        groupString = groupString + checkName + ",";
+        if(i === namesList.length - 1){
+          groupString = groupString + checkName;
+        }
+        else{
+          groupString = groupString + checkName + ", ";
+        }
       }
       if(groupName == ""){
         alert("Please enter a group name");
@@ -231,8 +291,25 @@
           groupMembers: groupString,
           groupCreate: myUser
         })
-        modal.style.display = "none";
+        window.location = "../groups/groupHome.html?username=" + myUser;
       }
+    }
+    function processGroup(groupName){
+      var modal = document.getElementById('editModal');
+      modal.style.display = "block";
+      var popupScreen = document.getElementById('popupEdit');
+      var dispGroup = firebase.database().ref().child('groups');
+      dispGroup.on('value', function(snap){
+        snap.forEach(function(childNodes){
+          var memberList = childNodes.val().groupMembers;
+          var groupCreate = childNodes.val().groupCreate;
+          var groupNameDB = childNodes.val().groupName;
+          var tempDel1 = memberList.split(", ");
+          if (groupName === groupNameDB){
+            
+          }
+        })
+      })
     }
     function goBack(){
       var myURL = window.location.href;

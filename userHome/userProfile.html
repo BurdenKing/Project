@@ -3,61 +3,6 @@
   <head>
     <title>EventsGo User Profile</title>
 	<meta charset="utf-8"/>
-    <style>
-      body {
-	    background-color: lightblue;
-	    width: 100%;
-		height: 100%;
-        overflow-x: hidden;
-	  }
-      html {
-	    width: 100%;
-		height: 100%;
-	  }
-	  #home {
-	    text-align: center;
-	  }
-      .data {
-        width: 66%;
-        height: 50%;
-        float: right;
-        background-color: violet;
-        border-radius: 10%;
-        
-      }
-      .image {
-        width: 33%;
-        float: left;
-        height: 75%;
-        text-align: center;
-      }
-      
-      #round {
-        border-radius: 50%;
-        width: 100px;
-      }
-      .persData {
-        margin-left: 45px;
-        
-      }
-      .editButtons {
-        position: relative;
-        text-align: center;
-      }
-      .edit {
-        width: 100px;    
-        filter: blur(1px);
-        cursor: pointer;
-      }
-      .edit:hover {
-        background-color: violet;
-      }
-      figcaption{
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -70,6 +15,71 @@
         messagingSenderId: "678746640473"
       };
       firebase.initializeApp(config);
+    </script>
+    <style>
+      #fName, #lName, #interest{
+        margin-top: 10px;
+      }
+      body {
+	    background-color: #1F2833;
+	    width: 100%;
+		height: 100%;
+        overflow-x: hidden;
+	  }
+      html {
+	    width: 100%;
+		height: 100%;
+	  }
+	  #home {
+	    text-align: center;
+        color: #66FCF1;
+	  }
+      .data {
+        width: 66%;
+        height: 50%;
+        float: right;
+        background-color: #0B0C10;
+        color: aliceblue;
+        border: 2px solid #C5C6C7;
+      }
+      .image {
+        width: 33%;
+        float: left;
+        height: 75%;
+        text-align: center;
+      }
+      
+      #round {
+        width: 100px;
+        border-radius: 50%;
+      }
+      .persData {
+        margin-left: 45px;
+        
+      }
+      .editButtons {
+        position: relative;
+        text-align: center;
+      }
+      .edit {
+        margin-top: 10px;
+        width: 100px;    
+        filter: blur(1px);
+        cursor: pointer;
+        border: 2px solid #66FCF1;
+        background-color: grey;
+      }
+      .edit:hover {
+        background-color: #45A29E;
+      }
+      figcaption{
+        font-weight: bold;
+        color: #C5C6C7;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
       var myURL = window.location.href;
       var myUserURL = myURL.split("?");
       var userNameString = myUserURL[1].split("=");
@@ -87,15 +97,9 @@
             document.getElementById("fName").innerHTML = "<b>First Name</b> = " + myFirst;
             document.getElementById("lName").innerHTML = "<b>Last Name</b> = " + myLast;
             document.getElementById("interest").innerHTML = "<b>Interests</b> = " + int;
-            document.getElementById("home").innerHTML = "Hello " + tempUser + ", welcome to EventsGo."
+            document.getElementById("home").innerHTML = "Hello " + tempUser + ", Welcome to EventsGo."
           }
         }) 
-      })
-      $('#eventPage').click(function(){
-        
-      })
-      $('#groupPage').click(function(){
-        
       })
       function editPage(){
         var myURL = window.location.href;

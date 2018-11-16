@@ -4,6 +4,19 @@
     <title>EventsGo Login Page</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+        authDomain: "comp1930project.firebaseapp.com",
+        databaseURL: "https://comp1930project.firebaseio.com",
+        projectId: "comp1930project",
+        storageBucket: "comp1930project.appspot.com",
+        messagingSenderId: "678746640473"
+      };
+      firebase.initializeApp(config);
+    </script>
 	<style>
 	  body {
 	    background-color: #1F2833;
@@ -32,7 +45,7 @@
 	    margin-top: 30px;
 	    text-align: center;
 	  }
-	  #button, #loginButton {
+	  #button, #loginButton, #createButton {
 	    background-color: #0B0C10;
 		border: 2px solid #66FCF1;
         color: #C5C6C7;
@@ -44,7 +57,7 @@
 		width: 350px;
         height: 40px;
 	  }
-      #button:hover, #loginButton:hover {
+      #button:hover, #loginButton:hover, #createButton:hover {
         background-color: #45A29E;      
       }
       
@@ -68,10 +81,10 @@
         height: 40px;
         width: 350px
       }
-      #info2, #pwd1 {
+      #info2, #pwd1, #inputFirst, #inputLast, #inputUser, #inputPass {
         margin-top: 2em;      
       }
-      #info3 {
+      #info3, #interest {
         height: 150px;
         width: 350px;
         margin-top: 2em;
@@ -252,16 +265,16 @@
             <div class="modal-content">
               <span class="close">&times;</span>
               <h1 class="home2">Create A New Account</h1>
-              <input class="infousername" type="text" id="name" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
-              <input class="info" id="info2" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
-              <input class="info" id="info2" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <input class="infousername" type="text" id="inputUser" name="name" placeholder="Username" pattern="[A-Za-z]{2,20}" required="required"/> 
+              <input class="info" id="inputFirst" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
+              <input class="info" id="inputLast" type="text" id="name" name="name" placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
               <!-- Interests -->
-              <input id="info3" type="text" id="name" name="name" placeholder="Interests" required="required"/>
+              <input id="interest" type="text" id="name" name="name" placeholder="Interests" required="required"/>
               <!-- Password -->    
-		      <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
-              <input class="info" id="info2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
+		      <input class="info" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+              <input class="info" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
               <form id="info2">
-	            <input type="submit" id="button" value="CREATE ACCOUNT">
+	            <input type="submit" id="createButton" value="CREATE ACCOUNT">
               </form>
             </div>
           </div>
@@ -303,18 +316,7 @@
       }
     </script>
     
-    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
-        authDomain: "comp1930project.firebaseapp.com",
-        databaseURL: "https://comp1930project.firebaseio.com",
-        projectId: "comp1930project",
-        storageBucket: "comp1930project.appspot.com",
-        messagingSenderId: "678746640473"
-      };
-      firebase.initializeApp(config);
       var root = firebase.database().ref().child('usernames');
       $('#createButton').click(function(){
         var myUser = $('#inputUser').val();
@@ -329,6 +331,7 @@
           interest: myInt,
           password: myPwd
         })
+        alert("Account successfully created!");
       });
       $('#loginButton').click(function(){
         var userFound = false;
