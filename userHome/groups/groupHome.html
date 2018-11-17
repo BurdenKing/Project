@@ -57,11 +57,17 @@
     .modal-content, .edit-content {
       color: #C5C6C7;
       background-color: #0B0C10;
+      overflow: auto;
       margin: 0 auto;
+      height: 500px;
       padding: 20px;
       border: 1px solid #888;
       width: 80%;
       text-align: center;
+    }
+    .editText{
+      text-align: left;
+      font-size: 18px;
     }
     .close {
       color: #aaaaaa;
@@ -120,6 +126,24 @@
       background-color: #45A29E;
       cursor: pointer;
     }
+    .listMember{
+      font-size: 15pt;
+      margin-top: 1em;
+      padding: 10px;
+      margin-bottom: 1em;
+      color: black;
+      background-color: #66FCF1; 
+      border: 2px solid #0B0C10;
+      margin: 0 auto;
+      width: 150px;
+    }
+    .listMember:hover{
+      background-color: red;
+      cursor: pointer;
+    }
+    .editText{
+      text-align: center;
+    }
 </style>
     
 </head>
@@ -143,7 +167,7 @@
   <div id="editModal" class="modal">
     <div class="edit-content" id="popupEdit">
       <span class="close">&times;</span>
-      <h1 class="home2">Edit this group</h1>
+      <h1 class="home2">To edit this group, click a user to remove them</h1>
     </div>
   </div>
   <div class='buttons'>
@@ -301,15 +325,80 @@
       var dispGroup = firebase.database().ref().child('groups');
       dispGroup.on('value', function(snap){
         snap.forEach(function(childNodes){
+          
           var memberList = childNodes.val().groupMembers;
+          //stores the member list from the database
           var groupCreate = childNodes.val().groupCreate;
           var groupNameDB = childNodes.val().groupName;
           var tempDel1 = memberList.split(", ");
+          
           if (groupName === groupNameDB){
             
+            var gNameText = document.createElement("h2"); 
+            gNameText.setAttribute("class", "editText");
+            gNameText.appendChild(document.createTextNode("Group Name = " + groupNameDB));
+            popupScreen.append(gNameText);
+            
+            var gCreateText = document.createElement("h2");
+            gCreateText.setAttribute("class", "editText");
+            gCreateText.appendChild(document.createTextNode("Group Creator = " + groupCreate));
+            popupScreen.append(gCreateText);
+            
+            var gGroupMember = document.createElement("h2");
+            gGroupMember.setAttribute("class", "editText");
+            gGroupMember.appendChild(document.createTextNode("Group Members:"));
+            popupScreen.append(gGroupMember);
+            if(tempDel1.length > 1){
+              for (var i = 1; i < tempDel1.length; i++){
+                var membersDiv = document.createElement("div");
+                membersDiv.setAttribute("class", "listMember");
+                membersDiv.setAttribute("onclick", "removeMem('" + groupNameDB + "', '" + tempDel1[i] + "')");
+                var eachMember = document.createElement("h3");
+                eachMember.setAttribute("class", "editText");
+                eachMember.appendChild(document.createTextNode(tempDel1[i]));
+                membersDiv.appendChild(eachMember);
+                popupScreen.append(membersDiv);
+              }
+            }
           }
         })
       })
+    }
+    function removeMem(groupName, memberName){
+      var rootGroup = firebase.database().ref().child('groups');
+      dispGroup.on('value', function(snap){
+        snap.forEach(function(childNodes){
+          var currKey = childNodes.key;
+          var memberList = childNodes.val().groupMembers;
+          //stores the member list from the database
+          var groupCreate = childNodes.val().groupCreate;
+          var groupNameDB = childNodes.val().groupName;
+          var tempDel1 = memberList.split(", ");
+          if (groupNameDB === groupName){
+            var tempStr = "";
+            for (var i = 0; i < tempDel1.length; i++){
+              if (i == 0){
+                tempStr += tempDel1[i];
+              } else if (memberName !== tempDel1[i]){
+                tempStr += ", " + tempDel1[i];
+              }
+            }
+            
+            var tempGroup = firebase.database().ref('/groups/' + currKey)
+            tempGroup.update({
+              'groupCreate': groupCreate,
+              'groupName': groupNameDB,
+              'groupMembers': tempStr
+            });            
+          }
+        })
+      })
+      alert("Successfully removed " + memberName);
+      var myURL = window.location.href;
+      var myUserURL = myURL.split("?");
+      var userNameString = myUserURL[1].split("=");
+      var myUser = userNameString[1];
+      window.location = "../groups/groupHome.html?username=" + myUser;
     }
     function goBack(){
       var myURL = window.location.href;
