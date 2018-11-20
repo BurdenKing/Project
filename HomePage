@@ -56,11 +56,11 @@
     
     <!-- Images for rotating images -->
     <div class="images">
-      <img src="../Images/events1.jpg" alt="Event 1" class="rotatingImages">
-      <img src="../Images/events2.jpg" class="rotatingImages">
-      <img src="../Images/events3.jpg" class="rotatingImages">
-      <img src="../Images/events4.jpg" class="rotatingImages">
-      <img src="../Images/events5.png" class="rotatingImages">
+      <img src="/Images/events1.jpg" alt="Event 1" class="rotatingImages">
+      <img src="/Images/events2.jpg" class="rotatingImages">
+      <img src="/Images/events3.jpg" class="rotatingImages">
+      <img src="/Images/events4.jpg" class="rotatingImages">
+      <img src="/Images/events5.png" class="rotatingImages">
     </div>
     <div class="text">
       <p id="welcome">Welcome</p>
