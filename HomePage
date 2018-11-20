@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=iso-8859-2" http-equiv="Content-type">
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
+      @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
         
       body {
         background-color: #1F2833;
@@ -16,23 +16,27 @@
         
       img {
         height: 40em;
-        width: 100%
+        width: 100%;
       }
       h1 {
         text-align: center;
         color: #66FCF1;
         font-size: 5em;
-        margin-top: .5em;
+        margin-top: .3em;
         font-weight: 900;
+        font-family: 'Abril Fatface', cursive;
+        letter-spacing: 7px;
       }
       .images {
-        margin-top: -2em;      
+        margin-top: -2em;
       }
       #welcome {
         margin-top: 1em;
-        font-size: 18pt;
-        font-family: 'Spicy Rice', cursive;
+        font-size: 24pt;
+        font-family: "sans-serif";
         color: #66FCF1;
+        text-align: center;
+        font-weight: 700;
       }
       .text {
         text-align: center;
@@ -77,11 +81,15 @@
         myIndex++;
         if (myIndex > x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
-        setTimeout(rotation, 3000); // Changes every image every 2.5 seconds
+        setTimeout(rotation, 2500); // Changes every image every 2.5 seconds
         }
         
         document.getElementById("body").onclick = function() {
-        window.location.href = "www.google.ca";
+        window.location.href = "login.html";
+        };
+        
+        document.getElementById("body").onkeypress = function() {
+        window.location.href = "login.html";
         };
     </script>
   </body>
