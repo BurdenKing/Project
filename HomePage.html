@@ -15,7 +15,7 @@
       }  
         
       img {
-        height: 40em;
+        height: 25em;
         width: 100%;
       }
       h1 {
@@ -56,11 +56,11 @@
     
     <!-- Images for rotating images -->
     <div class="images">
-      <img src="/Images/events1.jpg" alt="Event 1" class="rotatingImages">
-      <img src="/Images/events2.jpg" class="rotatingImages">
-      <img src="/Images/events3.jpg" class="rotatingImages">
-      <img src="/Images/events4.jpg" class="rotatingImages">
-      <img src="/Images/events5.png" class="rotatingImages">
+      <img src="./images/events1.jpg" alt="Event 1" class="rotatingImages">
+      <img src="./images/events2.jpg" class="rotatingImages">
+      <img src="./images/events3.jpg" class="rotatingImages">
+      <img src="./images/events4.jpg" class="rotatingImages">
+      <img src="./images/events5.jpg" class="rotatingImages">
     </div>
     <div class="text">
       <p id="welcome">Welcome</p>
@@ -79,17 +79,17 @@
             x[i].style.display = "none";
           }
         myIndex++;
-        if (myIndex > x.length) {myIndex = 1}
+        if (myIndex >= x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
         setTimeout(rotation, 2500); // Changes every image every 2.5 seconds
         }
         
         document.getElementById("body").onclick = function() {
-        window.location.href = "login.html";
+        window.location.href = "./loginPages/login.html";
         };
         
         document.getElementById("body").onkeypress = function() {
-        window.location.href = "login.html";
+        window.location.href = "./loginPages/login.html";
         };
     </script>
   </body>
