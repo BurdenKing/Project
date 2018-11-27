@@ -1,0 +1,48 @@
+<Doctype! html>
+<html>
+<head>
+    <meta charset = "utf -8">
+    <title> Create New Event </title>
+    
+    <style>
+    
+    
+    
+    
+    
+    
+    </style>
+    
+    </head>
+    
+<body>
+	<form  method="post">
+        <fieldset>
+        <input type="text" id="name" name="eventName" value="" required="required"
+          placeholder="Enter Event Name" pattern="[a-z][A-z]{8,20}">
+            <br/><br/>
+        <input type="text" id="name" name="eventLocation" value="" required="required"
+          placeholder="Enter Event Location" pattern="[a-z][A-Z]{8,20}">
+            <br/><br/>
+        <input type = "date" name = "eventDay" min ="2018-01-01"><br/><br/>
+            
+        <input type = "time" name = "eventTime"><br/><br/>
+            
+        <input type = "checkbox" name = "eventGroup" value = "Group1"> <br/> <br/>   
+            
+        <input type = "checkbox" name = "eventGroup" value = "Group2"> <br/> <br/>
+        
+        <input type = "checkbox" name = "eventGroup" value = "Group3"> <br/>  <br/> 
+        
+        <input type = "text" id = "eventDescription" name = "eventDescription" placeholder="Enter Event Description">
+            
+        <br/><br/>
+            
+        <input id="submit" name="Create New Event" value="Create New Event" type="submit"/>
+        <input id="reset" name="reset" value="Reset" type="reset"/>
+            
+			</fieldset>
+		</form>
+    
+    
+    </body>
