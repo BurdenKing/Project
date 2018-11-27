@@ -19,23 +19,29 @@
     <link rel="stylesheet" href="../../css/editPageStyle.css">
   </head>
   <body>
-      <h2>Edit User Information</h2>
+      <div id="background">
+      <h1>Edit User Information</h1>
       <div id="content">
-        Current First Name: <input class="info" id="inputFirst" type="text" id="name" name="name" pattern="[A-Za-z]{2,20}" required="required"/>
-        Current Last Name: <input class="info" id="inputLast" type="text" id="name" name="name" pattern="[A-Za-z]{2,20}" required="required"/>
+        <input class="info" id="inputFirst" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
+        <input class="info" id="inputLast" type="text" id="name" name="name"  placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
         <!-- Interests -->
-        Current Interests: <input class="info" id="interest" type="text" id="name" name="name" required="required"/>
+        <input class="info" id="interest" type="text" id="name" name="name" placeholder="Interests" required="required"/>
         <!-- Password -->    
-        New Password: <input class="info" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
-        Confirm Password: <input class="info" id="inputPass2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
+        <input class="info" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+        <input class="info" id="inputPass2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
       </div>
+      <span class="arrow arrow-left curve-right"><span class="curve"></span></span>
       <div id="back">
         <input type="submit" id="backButton" value="BACK HOME" onclick="goBack()">
       </div>
       <div id="submit">
         <input type="submit" id="backButton" value="SUBMIT" onclick="readData()">
       </div>
-      <script src="../../js/editPageScript.js"></script>      
+           
+      </div>
+    <script src="../../js/editPageScript.js"></script> 
+      
   </body>
   <footer></footer>
 </html>
+<!-- Code for edits page complete -->
