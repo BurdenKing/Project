@@ -17,9 +17,14 @@
         firebase.initializeApp(config);
     </script>
     <style>
-      h2{
+      h1 {
+        margin-top: 2em;
         text-align: center;
+        font-size: 35pt;
+        color: #45A29E;
+        padding-top: .8em; 
       }
+        
       body {
 	    background-color: #1F2833;
         color: #66FCF1;
@@ -27,6 +32,7 @@
 		height: 100%;
         overflow-x: hidden;
 	  }
+        
       #backButton{
 	    background-color: #0B0C10;
         color: #C5C6C7;
@@ -51,7 +57,6 @@
         margin: 0 auto; 
         width: 500px;
         text-align: center;
-        
       }
       .info {
         margin-top: 2em;
@@ -60,25 +65,37 @@
         height: 40px;
         width: 350px;
         display: inline-block;
+        text-align: center;
+      }
+      #background {
+        margin: 0 auto;
+        width: 35%;
+        background-color: white;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-bottom: 2em;
       }
     </style>
   </head>
   <body>
-      <h2>Edit User Information</h2>
+      <div id="background">
+      <h1>Edit User Information</h1>
       <div id="content">
-        Current First Name: <input class="info" id="inputFirst" type="text" id="name" name="name" pattern="[A-Za-z]{2,20}" required="required"/>
-        Current Last Name: <input class="info" id="inputLast" type="text" id="name" name="name" pattern="[A-Za-z]{2,20}" required="required"/>
+        <input class="info" id="inputFirst" type="text" id="name" name="name" placeholder="First Name" pattern="[A-Za-z]{2,20}" required="required"/>
+        <input class="info" id="inputLast" type="text" id="name" name="name"  placeholder="Last Name" pattern="[A-Za-z]{2,20}" required="required"/>
         <!-- Interests -->
-        Current Interests: <input class="info" id="interest" type="text" id="name" name="name" required="required"/>
+        <input class="info" id="interest" type="text" id="name" name="name" placeholder="Interests" required="required"/>
         <!-- Password -->    
-        New Password: <input class="info" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
-        Confirm Password: <input class="info" id="inputPass2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
+        <input class="info" id="inputPass" type="password" id="pwd" name="pwd" placeholder="Password" pattern="[A-Za-z]{6,20}" required="required"/>
+        <input class="info" id="inputPass2" type="password" id="pwd" name="pwd" placeholder="Confirm Password" pattern="[A-Za-z]{6,20}" required="required"/>
       </div>
+      <span class="arrow arrow-left curve-right"><span class="curve"></span></span>
       <div id="back">
         <input type="submit" id="backButton" value="BACK HOME" onclick="goBack()">
       </div>
       <div id="submit">
         <input type="submit" id="backButton" value="SUBMIT" onclick="readData()">
+      </div>
       </div>
       <script>
         var myURL = window.location.href;
@@ -143,3 +160,4 @@
   </body>
   <footer></footer>
 </html>
+<!-- Code for edits page complete -->
