@@ -1,0 +1,126 @@
+body {
+  background-color: #1F2833;   
+}
+h1 {
+  color: #66FCF1;
+  font-size: 3em;
+  text-align: center;
+}
+h2{
+  color: #C5C6C7;
+}
+.button:hover {
+  background-color: #45A29E;
+  cursor: pointer;
+}
+.button {
+  background-color: #0B0C10;
+  color: #C5C6C7;
+  border: 2px solid #66FCF1;
+  margin-top: 10px;
+  width: 350px;
+  height: 40px;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content, .edit-content {
+  color: #C5C6C7;
+  background-color: #0B0C10;
+  overflow: auto;
+  margin: 0 auto;
+  height: 500px;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: center;
+}
+.editText{
+  text-align: left;
+  font-size: 18px;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+div input {
+  width: 80%;
+}
+.content{
+  height: 40px;
+  width: 350px;
+  font-size: 15px;
+}
+#add {
+  width: 350px;
+  height: 40px;
+  text-align: center;
+  margin-top: 2em;
+}
+.home2 {
+  font-size: 35pt; 
+}
+#popup1{
+  text-align: left;
+}
+.groupList {
+  font-size: 13pt;
+}
+.buttons{
+  width: 300px;
+}
+#groups{
+  font-size: 15pt;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.groups1{
+  font-size: 15pt;
+  margin-top: 1em;
+  padding: 10px;
+  margin-bottom: 1em;
+  color: black;
+  background-color: #66FCF1; 
+  border: 2px solid #0B0C10;
+  width: 500px;
+}
+.groups1:hover {
+  background-color: #45A29E;
+  cursor: pointer;
+}
+.listMember{
+  font-size: 15pt;
+  margin-top: 1em;
+  padding: 10px;
+  margin-bottom: 1em;
+  color: black;
+  background-color: #66FCF1; 
+  border: 2px solid #0B0C10;
+  margin: 0 auto;
+  width: 150px;
+}
+.listMember:hover{
+  background-color: red;
+  cursor: pointer;
+}
+.editText{
+  text-align: center;
+}
