@@ -33,3 +33,10 @@ function groupPage(){
   var myUser = userNameString[1];
   window.location = "./groups/groupHome.html?username=" + myUser;
 }
+function eventPage(){
+  var myURL = window.location.href;
+  var myUserURL = myURL.split("?");
+  var userNameString = myUserURL[1].split("=");
+  var myUser = userNameString[1];
+  window.location = "./events/eventHome.html?username=" + myUser;
+}
