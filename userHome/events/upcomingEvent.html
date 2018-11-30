@@ -49,7 +49,7 @@
         var li = document.createElement('div');
         li.innerHTML = myEventName;
 
-      if(Date.parse(myDateAndTime) > now){
+      if(Date.parse(myDateAndTime) >= now){
         document.body.appendChild(li);  
    }
         
