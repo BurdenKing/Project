@@ -20,12 +20,16 @@
   <link rel="stylesheet" href="../../css/groupsHomeStyle.css">
 </head>
 <body>
-  <h1>Your Groups</h1>
+  <header>
+    <h1>Groups</h1>
+  </header>
+    
+  <!-- Databse -->
   <h2>Click a group to edit its members</h2>
   <div id="myModal" class="modal">
     <div class="modal-content" id="popup">
       <span class="close">&times;</span>
-      <h1 class="home2">Create a New Group</h1>
+      <h1 class="home2">Create a new Group</h1>
       <h3>Your group name:</h3>
       <input class="content" id="groupName" type="text" name="name" placeholder="Group Name" required="required"/>
       <h3>Enter username here:</h3>
@@ -43,11 +47,12 @@
     </div>
   </div>
   <div class='buttons'>
-    <input type="submit" id="create" class="button" value="CREATE A NEW GROUP" onclick="createGroup()">
+    <input type="submit" id="create" class="button" id="center" value="CREATE A NEW GROUP" onclick="createGroup()">
     <div id="groups"></div>
-    <input type="submit" id="back" class="button" value="BACK HOME" onclick="goBack()">
+    <input type="submit" id="back" class="button" id="center" value="BACK HOME" onclick="goBack()">
   </div>
   
+  <!-- JavaScrip -->
   <script src="../../js/groupHomeScript.js"></script>
 </body>
 </html>
