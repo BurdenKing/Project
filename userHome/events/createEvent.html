@@ -111,7 +111,7 @@
         background-color: #45A29E;      
       }
         
-      #Btn {
+      #createButton {
 	    background-color: #0B0C10;
         border: 2px solid #66FCF1;
         color: #C5C6C7;
@@ -200,7 +200,7 @@
       
       <!-- Back Button -->
       <div id="center">
-        <button id="Btn">Back</button>
+        <button id="BackBtn">Back</button>
       </div>
           
       <!-- The Modal -->
@@ -216,14 +216,12 @@
         <input class="infomain" id="eventName" type="text" id="name" name="name" placeholder="Name" pattern="[A-Za-z]{2,20}" required="required"/>
         <!-- Location -->
         <input class="info" id="location" type="text" id="name" name="name"  placeholder="Location" pattern="[A-Za-z]{2,20}" required="required"/>
-        <!-- Time -->
-        <input class="info" type="time" id="time" name="name" placeholder="Time" required="required"/>
-        <!-- Date -->
-        <input class="info" type="date" id="date" name="name" placeholder="Time" required="required"/>
+        <!-- Date and Time -->
+        <input class="info" type="datetime-local" id="dateAndTime" name="name" placeholder="Time" required="required"/>
         <!-- Description -->    
         <input class="info" type="text" id="description" name="name" placeholder="Description" pattern="[A-Za-z]{6,20}" required="required"/>
         <!-- Button -->
-        <button id="button3">Create New Event</button>
+        <button id="createButton">Create New Event</button>
       </div>
       </div>
       </div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+    <title>pastEvent</title>
+    <meta charset="utf-8"/>    
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+
+
+
+
+        
+        
+    <script>
+    // Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+    authDomain: "comp1930project.firebaseapp.com",
+    databaseURL: "https://comp1930project.firebaseio.com",
+    projectId: "comp1930project",
+    storageBucket: "comp1930project.appspot.com",
+    messagingSenderId: "678746640473"
+    };
+    firebase.initializeApp(config); 
+    
+    var databse = firebase.database();
+    
+    
+        
+    var ref = databse.ref().child('events');
+    ref.on('value', getEvent, errEvent);
+    
+    var now = new Date().valueOf();
+    console.log(now);     
+
+        
+    function getEvent(event){
+    var events = event.val();
+    var eventsArray = Object.keys(events);
+        
+    for(var i = 0; i < eventsArray.length; i++){
+        var k = eventsArray[i];
+        var myEventName = events[k].Event_Name;
+        var myDateAndTime = events[k].DateAndTime;
+        
+
+        
+        
+        
+        var li = document.createElement('div');
+        li.innerHTML = myEventName;
+
+      if(Date.parse(myDateAndTime) < now){
+        document.body.appendChild(li);  
+   }
+        
+    }
+}
+        
+    function errEvent(err){
+        alert("Error!");
+        
+    }    
+    </script>    
+    </head>
+    <body>
+    <h1> Past Event</h1>
+    <p>
+    
+    </p>
+    </body>
+</html>
