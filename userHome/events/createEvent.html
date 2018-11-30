@@ -3,6 +3,7 @@
   <head>
     <title>Creating an Event</title>
 	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
       <script>
         // Initialize Firebase
@@ -14,7 +15,7 @@
           storageBucket: "comp1930project.appspot.com",
           messagingSenderId: "678746640473"
         };
-        firebase.initializeApp(config);
+        firebase.initializeApp(config);  
     </script>
     <style>
       /* Importing heading text
@@ -212,17 +213,17 @@
         <div id="background">
         <h1>Event</h1>
         <!-- Event Name -->
-        <input class="infomain" id="inputFirst" type="text" id="name" name="name" placeholder="Name" pattern="[A-Za-z]{2,20}" required="required"/>
+        <input class="infomain" id="eventName" type="text" id="name" name="name" placeholder="Name" pattern="[A-Za-z]{2,20}" required="required"/>
         <!-- Location -->
-        <input class="info" id="inputLast" type="text" id="name" name="name"  placeholder="Location" pattern="[A-Za-z]{2,20}" required="required"/>
+        <input class="info" id="location" type="text" id="name" name="name"  placeholder="Location" pattern="[A-Za-z]{2,20}" required="required"/>
         <!-- Time -->
-        <input class="info" type="time" id="name" name="name" placeholder="Time" required="required"/>
+        <input class="info" type="time" id="time" name="name" placeholder="Time" required="required"/>
         <!-- Date -->
-        <input class="info" type="date" id="name" name="name" placeholder="Time" required="required"/>
+        <input class="info" type="date" id="date" name="name" placeholder="Time" required="required"/>
         <!-- Description -->    
-        <input class="info" type="text" id="name" name="name" placeholder="Description" pattern="[A-Za-z]{6,20}" required="required"/>
+        <input class="info" type="text" id="description" name="name" placeholder="Description" pattern="[A-Za-z]{6,20}" required="required"/>
         <!-- Button -->
-        <button id="Btn">Create New Event</button>
+        <button id="button3">Create New Event</button>
       </div>
       </div>
       </div>
@@ -254,6 +255,7 @@
         }
       }  
     </script>
+    <script src="../../js/createEvent.js"></script>
   </body>
 </html>
 
