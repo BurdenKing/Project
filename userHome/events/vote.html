@@ -16,38 +16,70 @@ var config = {
             };
     firebase.initializeApp(config);
   
-
-    <script language="javascript" type="text/javascript" src="../../libraries/p5.js"></script>
-    <script language="javascript" type="text/javascript" src="../../libraries/p5.dom.js"></script>
+    var database = firebase.database();
+    var ref = database.ref().child('events');
+    var dispGroup = database.ref().child('groups');
     
-    var ref = databse.ref().child('events');
-    ref.on('value', getEvent, errEvent);
+    var myURL = window.location.href;
+    var myUserURL = myURL.split("?");
+    var userNameString = myUserURL[1].split("=");
+    var myUser = userNameString[1];
+
+
+    var eventsArray = [];
     
 
+    var now = new Date().valueOf();
+  
+    ref.on('value', function(snapshot) {
+    
 
         
-    function getEvent(event){
-    var events = event.val();
-    var eventsArray = Object.keys(events);
+    snapshot.forEach(function(childSnapshot) {
+      var myEventsName = childSnapshot.val().Event_Name;
+      var myDateAndTime = childSnapshot.val().DateAndTime;
+      var myGroup = childSnapshot.val().Group;
+      console.log(myEventsName,myDateAndTime,myGroup);
+        
+      if(Date.parse(myDateAndTime) >= now && myGroup.groupMembers.includes(myUser)){
+      eventsArray.push(myEventsName);
+
+    }
+        
+        
+
+    });
+    
         
     for(var i = 0; i < eventsArray.length; i++){
-        var k = eventsArray[i];
-        var myEventName = events[k].Event_Name;
-        var myDateAndTime = events[k].DateAndTime;
+        var temp = document.createElement('event');
+        temp.innerHTML = eventsArray[i];
+    document.body.appendChild(temp);
+        var checkbox = document.createElement('input');
+        checkbox.setAttribute("type", "checkbox");
+    document.body.appendChild(checkbox);
+        var br = document.createElement('br');
+    document.body.appendChild(br);
+    }
+    var myBtn = document.createElement('input');
+        myBtn.setAttribute("type", "button");
+        myBtn.setAttribute("value", "submit");
+    document.body.appendChild(myBtn);
+          
         
+        
+   console.log(eventsArray);
+});
+    
 
         
-        
-        
-        var li = document.createElement('div');
-        li.innerHTML = myEventName;
+    
+    
+       
+      </script>    
+    
+    
 
-      if(Date.parse(myDateAndTime) >= now){
-        document.body.appendChild(li);  
-   } 
-        </script>
-    
-    
       
  
 <!--
@@ -143,10 +175,13 @@ var config = {
         background-color: #45A29E;      
       }
     </style>
+
 -->
+      
   </head>
   <body>
-
+  <h1> Voting Page</h1>
+      
   </body>
 </html>
 

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-    <title>pastEvent</title>
+    <title>Upcoming Events</title>
     <meta charset="utf-8"/>    
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 
@@ -23,11 +23,12 @@
     };
     firebase.initializeApp(config); 
     
-    var databse = firebase.database();
+    var database = firebase.database();
     
     
         
-    var ref = databse.ref().child('events');
+    var ref = database.ref().child('events');
+    var dispGroup = database.ref().child('groups'); 
     ref.on('value', getEvent, errEvent);
     
     var now = new Date().valueOf();
@@ -37,7 +38,7 @@
     function getEvent(event){
     var events = event.val();
     var eventsArray = Object.keys(events);
-        
+       
     for(var i = 0; i < eventsArray.length; i++){
         var k = eventsArray[i];
         var myEventName = events[k].Event_Name;
@@ -53,20 +54,35 @@
       if(Date.parse(myDateAndTime) >= now){
         document.body.appendChild(li);  
    }
-        
+
     }
+    var btn = document.createElement("input");
+    btn.setAttribute("type", "button" );
+    btn.setAttribute("value", "Go Vote!");
+    btn.setAttribute('id', "myBtn");
+    document.body.appendChild(btn);
+        
+        btn.onclick = function(){
+      var myURL = window.location.href;
+      var myUserURL = myURL.split("?");
+      var userNameString = myUserURL[1].split("=");
+      var myUser = userNameString[1];
+      window.location.href = "./vote.html?username=" + myUser ;
+    }
+  
 }
         
     function errEvent(err){
         alert("Error!");
         
-    }    
+    }
+    
+
     </script>    
     </head>
     <body>
     <h1> Upcoming Events</h1>
     <p>
-    
     </p>
     </body>
 </html>
