@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Vote for an event</title>
 	<meta charset="utf-8"/>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+          // Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
+    authDomain: "comp1930project.firebaseapp.com",
+    databaseURL: "https://comp1930project.firebaseio.com",
+    projectId: "comp1930project",
+    storageBucket: "comp1930project.appspot.com",
+    messagingSenderId: "678746640473"
+            };
+    firebase.initializeApp(config);
+  
+
+    <script language="javascript" type="text/javascript" src="../../libraries/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="../../libraries/p5.dom.js"></script>
+    
+    var ref = databse.ref().child('events');
+    ref.on('value', getEvent, errEvent);
+    
+
+
+        
+    function getEvent(event){
+    var events = event.val();
+    var eventsArray = Object.keys(events);
+        
+    for(var i = 0; i < eventsArray.length; i++){
+        var k = eventsArray[i];
+        var myEventName = events[k].Event_Name;
+        var myDateAndTime = events[k].DateAndTime;
+        
+
+        
+        
+        
+        var li = document.createElement('div');
+        li.innerHTML = myEventName;
+
+      if(Date.parse(myDateAndTime) >= now){
+        document.body.appendChild(li);  
+   } 
+        </script>
+    
+    
+      
  
+<!--
     <style>
       h1 {
         margin-top: 2.3em;
@@ -96,44 +143,10 @@
         background-color: #45A29E;      
       }
     </style>
+-->
   </head>
   <body>
-      <!-- Background -->
-      <div id="background">
-      <h1>Event</h1>
-      <div id="content">
-        <form id ="createNewEvent">
-        <!-- Event Name -->
-        <input class="infomain" id="eventName" type="text" name="name" placeholder="Name" pattern="[A-Za-z]{2,20}" required="required"/>
-        <!-- Location -->
-        <input class="info" id="location" type="text" id="name" name="name"  placeholder="Location" pattern="[A-Za-z]{2,20}" required="required"/>
-        <!-- Time -->
-        <input class="info" type="time" id="time" name="name" required="required"/>
-        <!-- Date -->
-        <input class="info" type="date" id="date" name="name"  required="required"/>
-        <!-- Description -->    
-        <input class="info" type="text" id="description" name="name" placeholder="Description" pattern="[A-Za-z]{6,20}" required="required"/>
-        <!-- Button -->
-        <button id="myBtn">Create New Event</button>
-        </form>
-      </div>
-      </div>
-         <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-      <script>
-          // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDCa_8SolFzkpl9m292jOa4Uz-GY6eMALg",
-    authDomain: "comp1930project.firebaseapp.com",
-    databaseURL: "https://comp1930project.firebaseio.com",
-    projectId: "comp1930project",
-    storageBucket: "comp1930project.appspot.com",
-    messagingSenderId: "678746640473"
-            };
-    firebase.initializeApp(config);
-  
-    </script>
-      <script src ="../../js/newEventAndVote.js"></script>
-      
+
   </body>
 </html>
 

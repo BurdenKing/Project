@@ -29,8 +29,7 @@
     var ref = databse.ref().child('events');
     ref.on('value', getEvent, errEvent);
     
-    var now = new Date().valueOf();
-    console.log(now);     
+    var now = new Date().valueOf();    
 
         
     function getEvent(event){
@@ -49,7 +48,7 @@
         var li = document.createElement('div');
         li.innerHTML = myEventName;
 
-      if(Date.parse(myDateAndTime) > now){
+      if(Date.parse(myDateAndTime) >= now){
         document.body.appendChild(li);  
    }
         

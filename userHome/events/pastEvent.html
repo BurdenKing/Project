@@ -29,8 +29,7 @@
     var ref = databse.ref().child('events');
     ref.on('value', getEvent, errEvent);
     
-    var now = new Date().valueOf();
-    console.log(now);     
+    var now = new Date().valueOf();   
 
         
     function getEvent(event){
