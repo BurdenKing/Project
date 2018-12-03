@@ -20,10 +20,6 @@ var config = {
     var ref = database.ref().child('events');
     
     
-    var myURL = window.location.href;
-    var myUserURL = myURL.split("?");
-    var userNameString = myUserURL[1].split("=");
-    var myUser = userNameString[1];
 
     //isValidUser validates if user have the access to events.
     var myURL = window.location.href;
@@ -48,9 +44,15 @@ var config = {
     })
 
     var eventsArray = [];
+    var voteCountArray = [];
     
 
     var now = new Date().valueOf();
+        
+        
+
+        
+        
   
     ref.on('value', function(snapshot) {
     
@@ -64,6 +66,8 @@ var config = {
       }
 
     });
+        
+
     
 
         
@@ -76,19 +80,45 @@ var config = {
         Btn.setAttribute("value", "vote");
         Btn.setAttribute("id", "voteBtn");
         
-                
         
-    }
     document.body.appendChild(Btn);
+    }
+
         
-    var br = document.createElement('br');
-    document.body.appendChild(br);
+    var lineBreak = document.createElement('br');
+    document.body.appendChild(lineBreak);
     var myBtn = document.createElement('input');
         myBtn.setAttribute("type", "button");
         myBtn.setAttribute("value", "submit");
     document.body.appendChild(myBtn);
+    
+     myBtn.onclick = function(){
+    var lineBreak = document.createElement('br');
+    document.body.appendChild(lineBreak);
+    ref.on('value', function(snapshot) {  
+    snapshot.forEach(function(childSnapshot) {
+      var myEventsName = childSnapshot.val().Event_Name;
+      var myDateAndTime = childSnapshot.val().DateAndTime;
+      var myVoteCount = childSnapshot.val().VoteCount;
+      if(Date.parse(myDateAndTime) >= now && isValidUser){
+      eventsArray.push(myEventsName);
+      voteCountArray.push(myVoteCount);
+      }
 
-});
+    })
+    })
+         for(var i = 0; i < eventsArray.length; i++){
+             
+             var temp = document.createElement('result');
+             temp.innerHTML = eventsArray[i] + " Votes : " + voteCountArray[i];
+             document.body.appendChild(temp);
+             var lineBreak = document.createElement('br');
+             document.body.appendChild(lineBreak);
+         }
+
+                     
+                 }
+             });
     
 
         
