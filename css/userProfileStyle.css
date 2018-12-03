@@ -1,6 +1,5 @@
 #fName, #lName, #interest{
   margin-top: 10px;
-  font-size: 15pt;
 }
 body {
   background-color: #1F2833;
@@ -37,7 +36,6 @@ html {
 }
 .persData {
   margin-left: 45px;
-  font-size: 18pt;
 }
 .editButtons {
   position: relative;
