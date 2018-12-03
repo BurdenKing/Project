@@ -18,13 +18,34 @@ var config = {
   
     var database = firebase.database();
     var ref = database.ref().child('events');
-    var dispGroup = database.ref().child('groups');
+    
     
     var myURL = window.location.href;
     var myUserURL = myURL.split("?");
     var userNameString = myUserURL[1].split("=");
     var myUser = userNameString[1];
 
+    //isValidUser validates if user have the access to events.
+    var myURL = window.location.href;
+    var myUserURL = myURL.split("?");
+    var userNameString = myUserURL[1].split("=");
+    var myUser = userNameString[1];
+    
+    
+ 
+    var ref = database.ref().child('events');
+    var isValidUser = false;
+        
+    ref.on('value', function(snap){
+        snap.forEach(function(snapChild){
+            myMemberList = snapChild.val().AllMembers;
+            for(var i = 0; i < myMemberList.length; i++){
+                if (myMemberList[i].includes(myUser)){
+                    isValidUser = true;
+                }
+            }
+        })
+    })
 
     var eventsArray = [];
     
@@ -33,31 +54,37 @@ var config = {
   
     ref.on('value', function(snapshot) {
     
-
+    
         
     snapshot.forEach(function(childSnapshot) {
       var myEventsName = childSnapshot.val().Event_Name;
       var myDateAndTime = childSnapshot.val().DateAndTime;
-      var myGroup = childSnapshot.val().Group;
-      console.log(myEventsName,myDateAndTime,myGroup);
-        
-      if(Date.parse(myDateAndTime) >= now && myGroup.groupMembers.includes(myUser)){
+      if(Date.parse(myDateAndTime) >= now && isValidUser){
       eventsArray.push(myEventsName);
-
-    }
-        
-        
+      }
 
     });
     
+
         
     for(var i = 0; i < eventsArray.length; i++){
         var temp = document.createElement('event');
         temp.innerHTML = eventsArray[i];
-    document.body.appendChild(temp);
-        var checkbox = document.createElement('input');
-        checkbox.setAttribute("type", "checkbox");
-    document.body.appendChild(checkbox);
+        document.body.appendChild(temp);
+        var Btn= document.createElement('input');
+        Btn.setAttribute("type", "button");
+        Btn.setAttribute("value", "vote");
+        Btn.setAttribute("id", "voteBtn");
+        
+        var countText = document.createElement('text');
+        countText.innerHTML = 
+        
+            myBtn.onclick = function(){
+                
+        
+    }
+    document.body.appendChild(Btn);
+        
         var br = document.createElement('br');
     document.body.appendChild(br);
     }
@@ -65,10 +92,7 @@ var config = {
         myBtn.setAttribute("type", "button");
         myBtn.setAttribute("value", "submit");
     document.body.appendChild(myBtn);
-          
-        
-        
-   console.log(eventsArray);
+
 });
     
 

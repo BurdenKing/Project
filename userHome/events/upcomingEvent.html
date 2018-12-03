@@ -25,10 +25,27 @@
     
     var database = firebase.database();
     
+    var myURL = window.location.href;
+    var myUserURL = myURL.split("?");
+    var userNameString = myUserURL[1].split("=");
+    var myUser = userNameString[1];
     
-        
+    
+ 
     var ref = database.ref().child('events');
-    var dispGroup = database.ref().child('groups'); 
+    var isValidUser = false;
+        
+    ref.on('value', function(snap){
+        snap.forEach(function(snapChild){
+            myMemberList = snapChild.val().AllMembers;
+            for(var i = 0; i < myMemberList.length; i++){
+                if (myMemberList[i].includes(myUser)){
+                    isValidUser = true;
+                }
+            }
+        })
+    })
+    
     ref.on('value', getEvent, errEvent);
     
     var now = new Date().valueOf();
@@ -37,21 +54,24 @@
     function getEvent(event){
     var events = event.val();
     var eventsArray = Object.keys(events);
+    console.log(eventsArray);
+    
        
     for(var i = 0; i < eventsArray.length; i++){
         var k = eventsArray[i];
         var myEventName = events[k].Event_Name;
         var myDateAndTime = events[k].DateAndTime;
+        console.log(myEventName);
         
-        
-        
-        
+        console.log(isValidUser);
         var li = document.createElement('div');
         li.innerHTML = myEventName;
-      if(Date.parse(myDateAndTime) >= now){
+        console.log(li);
+        if((Date.parse(myDateAndTime) >= now) && isValidUser){
         document.body.appendChild(li);  
-   }
     }
+}
+
     var btn = document.createElement("input");
     btn.setAttribute("type", "button" );
     btn.setAttribute("value", "Go Vote!");
@@ -65,8 +85,8 @@
       var myUser = userNameString[1];
       window.location.href = "./vote.html?username=" + myUser ;
     }
+    }
   
-}
         
     function errEvent(err){
         alert("Error!");
