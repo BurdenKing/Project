@@ -67,6 +67,7 @@ body {
 #info3, #interest {
   height: 150px;
   width: 350px;
+  font-size: 15pt;
   margin-top: 2em;
 }
 .check {
@@ -199,4 +200,7 @@ body {
   font-size: 15pt;
   height: 40px;
   width: 350px        
+}
+#interest {
+  font-size: 15pt;
 }
