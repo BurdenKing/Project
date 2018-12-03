@@ -3,13 +3,7 @@
     <head>
     <title>pastEvent</title>
     <meta charset="utf-8"/>    
-    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-
-
-
-
-        
-        
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script> 
     <script>
     // Initialize Firebase
     var config = {
@@ -30,7 +24,6 @@
     ref.on('value', getEvent, errEvent);
     
     var now = new Date().valueOf();   
-
         
     function getEvent(event){
     var events = event.val();
@@ -41,13 +34,11 @@
         var myEventName = events[k].Event_Name;
         var myDateAndTime = events[k].DateAndTime;
         
-
         
         
         
         var li = document.createElement('div');
         li.innerHTML = myEventName;
-
       if(Date.parse(myDateAndTime) < now){
         document.body.appendChild(li);  
    }
@@ -59,12 +50,33 @@
         alert("Error!");
         
     }    
-    </script>    
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+        
+      body {
+	    background-color: #1F2833;
+        color: #66FCF1;
+	    width: 100%;
+		height: 100%;
+        overflow-x: hidden;
+	  }
+        
+      #text {
+        text-align: center;
+        color: #66FCF1;
+        font-size: 5em;
+        margin-top: 0.5em;
+        font-weight: 900;
+        font-family: 'Abril Fatface', cursive;
+        letter-spacing: 7px;
+      }
+        
+    </style>
     </head>
     <body>
-    <h1> Past Event</h1>
-    <p>
-    
-    </p>
+    <header>
+      <h1 id="text">Past Events</h1>
+    </header>
     </body>
 </html>
