@@ -126,6 +126,7 @@
           background-color: #66FCF1; 
           border: 2px solid #0B0C10;
           width: 500px;
+          margin: 0 auto;
         }
       
         .groups1:hover {
