@@ -33,7 +33,6 @@
     
     var now = new Date().valueOf();
     console.log(now);     
-
         
     function getEvent(event){
     var events = event.val();
@@ -44,17 +43,14 @@
         var myEventName = events[k].Event_Name;
         var myDateAndTime = events[k].DateAndTime;
         
-
         
         
         
         var li = document.createElement('div');
         li.innerHTML = myEventName;
-
       if(Date.parse(myDateAndTime) >= now){
         document.body.appendChild(li);  
    }
-
     }
     var btn = document.createElement("input");
     btn.setAttribute("type", "button" );
@@ -77,13 +73,33 @@
         
     }
     
-
     </script>    
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+        
+      body {
+	    background-color: #1F2833;
+        color: #66FCF1;
+	    width: 100%;
+		height: 100%;
+        overflow-x: hidden;
+	  }
+        
+      #text {
+        text-align: center;
+        color: #66FCF1;
+        font-size: 5em;
+        margin-top: 0.5em;
+        font-weight: 900;
+        font-family: 'Abril Fatface', cursive;
+        letter-spacing: 7px;
+      }
+        
+    </style>
     </head>
     <body>
-    <h1> Upcoming Events</h1>
-    <p>
-    </p>
+    <header>
+      <h1 id="text">Upcoming Events</h1>
+    </header>
     </body>
 </html>
-
