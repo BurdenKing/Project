@@ -111,6 +111,24 @@
         background-color: #45A29E;      
       }
         
+      #BackBtn {
+	    background-color: #0B0C10;
+        border: 2px solid #66FCF1;
+        color: #C5C6C7;
+		cursor: pointer;
+		font-size: 20px;
+		text-align: center;
+		padding: 5px 5px;
+		margin-top: 2em;
+		width: 350px;
+        height: 40px;
+	  }
+        
+      #BackBtn:hover{
+        background-color: #45A29E;      
+      }
+        
+        
       #createButton {
 	    background-color: #0B0C10;
         border: 2px solid #66FCF1;
@@ -127,7 +145,6 @@
       #Btn:hover{
         background-color: #45A29E;      
       }
-
       /* The Modal (background) */
       .modal {
         margin: 0 auto;
@@ -143,7 +160,6 @@
         background-color: rgb(0,0,0); /* Fallback color */
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
       }
-
       /* Modal Content/Box */
       .modal-content {
         margin: 0 auto;
@@ -152,7 +168,6 @@
         border: 1px solid #888;
         width: 40%; /* Could be more or less, depending on screen size */
       }
-
       /* The Close Button */
       .close {
         color: #45A29E;
@@ -160,7 +175,6 @@
         font-size: 28px;
         font-weight: 900;
       }
-
       .close:hover,
       .close:focus {
         color: black;
@@ -231,23 +245,18 @@
     <script>
       // Get the modal
       var modal = document.getElementById('myModal');
-
       // Get the button that opens the modal
       var btn = document.getElementById("myBtn");
-
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-
       // When the user clicks on the button, open the modal 
       btn.onclick = function() {
       modal.style.display = "block";
       }
-
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
         modal.style.display = "none";
       }
-
       // When the user clicks anywhere outside of the modal, close it
       window.onclick = function(event) {
         if (event.target == modal) {
