@@ -40,14 +40,14 @@ html {
 .persData {
   margin-left: 45px;
   font-size: 25px;
-  color: #667292;
+  color: black;
 }
 .editButtons {
   position: relative;
   text-align: center;
 }
 .edit {
-  margin-top: 2.4em;
+  margin-top: 2.95em;
   width: 140px;    
   filter: blur(1px);
   cursor: pointer;
@@ -66,5 +66,5 @@ figcaption {
   font-size: 25pt;
   margin-left: 45px;
   text-decoration: underline;
-  color : #667292;
+  color : black;
 }
