@@ -25,7 +25,6 @@ html {
   color: aliceblue;
   border: 2px solid #667292;
   margin-top: 2em;
-  animation-timing-function: ease-in;
 }
 .image {
   float: left;
