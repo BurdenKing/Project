@@ -34,6 +34,8 @@
  
     var ref = database.ref().child('events');
     
+
+    
     var AllMembersArray = [];
     var isValidUser = false;
     var tempCount = 0;
@@ -56,9 +58,8 @@
         var myAttendees = events[k].AllMembers;
         AllMembersArray.push(myAttendees);
         
-       var finalArray = AllMembersArray.prototype.flat(2);
         
-        console.log(finalArray);
+        console.log(flat(AllMembersArray));
         
         if(AllMembersArray.includes(myUser)){
             isValidUser = true;
