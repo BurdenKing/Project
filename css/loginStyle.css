@@ -1,9 +1,9 @@
 body {
-  background-color: #1F2833;
+  background-color: #CFE0E8;
 }
 .context {
   margin: auto;
-  border: #66FCF1 solid 2px;
+  border: #667292 solid 2px;
   width: 685px;
   margin-top: 9em;
   padding-bottom: 3em;
@@ -14,7 +14,7 @@ body {
 .home {
   text-align: center;
   font-size: 35pt;
-  color: #66FCF1;
+  color: #667292;
 }
 .user {
   margin: 0 auto;
@@ -26,9 +26,9 @@ body {
   text-align: center;
 }
 #button, #loginButton, #createButton {
-  background-color: #0B0C10;
-  border: 2px solid #66FCF1;
-  color: #C5C6C7;
+  background-color: #F9CCAC;
+  border: 2px solid #667292;
+  color: #667292;
   cursor: pointer;
   font-size: 20px;
   text-align: center;
@@ -38,13 +38,13 @@ body {
   height: 40px;
 }
 #button:hover, #loginButton:hover, #createButton:hover {
-  background-color: #45A29E;      
+  background-color: #D9AD7C;      
 }
       
 #myBtn {
-  background-color: #0B0C10;
-  border: 2px solid #66FCF1;
-  color: #C5C6C7;
+  background-color: #F9CCAC;
+  border: 2px solid #667292;
+  color: #667292;
   cursor: pointer;
   font-size: 20px;
   text-align: center;
@@ -54,7 +54,7 @@ body {
   height: 40px;
 }
 #myBtn:hover{
-  background-color: #45A29E;      
+  background-color: #D9AD7C;      
 }
 .info {
   font-size: 15pt;
