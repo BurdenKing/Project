@@ -18,7 +18,6 @@
     
     var database = firebase.database();
     
-//isValidUser validates if user have the access to events.
     var myURL = window.location.href;
     var myUserURL = myURL.split("?");
     var userNameString = myUserURL[1].split("=");
@@ -27,44 +26,71 @@
     
  
     var ref = database.ref().child('events');
-    var isValidUser = false;
         
-    ref.on('value', function(snap){
-        snap.forEach(function(snapChild){
-            myMemberList = snapChild.val().AllMembers;
-            for(var i = 0; i < myMemberList.length; i++){
-                if (myMemberList[i].includes(myUser)){
-                    isValidUser = true;
-                }
-            }
-        })
-    })
     
     ref.on('value', getEvent, errEvent);
     
-    var now = new Date().valueOf();
-    console.log(now);     
+    var now = new Date().valueOf();    
         
     function getEvent(event){
     var events = event.val();
     var eventsArray = Object.keys(events);
-    console.log(eventsArray);
     
        
     for(var i = 0; i < eventsArray.length; i++){
         var k = eventsArray[i];
         var myEventName = events[k].Event_Name;
         var myDateAndTime = events[k].DateAndTime;
-        console.log(myEventName);
-        
-        console.log(isValidUser);
-        var li = document.createElement('div');
+        var myLocation = events[k].Location;
+        var myGroup = events[k].Group;
+        var myDescription = events[k].Description;
+        var myAttendees = events[k].AllMembers;
+
+        if(Date.parse(myDateAndTime) < now){
+            
+        var li = document.createElement('text');
         li.innerHTML = myEventName;
-        console.log(li);
-        if((Date.parse(myDateAndTime) < now) && isValidUser){
-        document.body.appendChild(li);  
+        var breakline = document.createElement('br');
+        document.body.appendChild(breakline);
+            
+        document.body.appendChild(li);
+        document.body.appendChild(breakline);
+         
+
+
+        var li2 = document.createElement('text');
+        li2.innerHTML = "Location: " + myLocation;
+        document.body.appendChild(li2);
+        var breakline = document.createElement('br');
+        document.body.appendChild(breakline);
+        
+        var li3 = document.createElement('text');
+        li3.innerHTML = "Group(s): " + myGroup;
+        document.body.appendChild(li3);
+        var breakline = document.createElement('br');
+        document.body.appendChild(breakline);
+
+        var li4 = document.createElement('text');
+        li4.innerHTML = "Date and Time: " + myDateAndTime;
+        document.body.appendChild(li4);
+        var breakline = document.createElement('br');
+        document.body.appendChild(breakline);
+
+        var li5 = document.createElement('text');
+        li5.innerHTML = "Desciptions: " + myDescription;
+        document.body.appendChild(li5);
+        var breakline = document.createElement('br');
+        document.body.appendChild(breakline);
+
+        var li6 = document.createElement('text');
+        li6.innerHTML = "Attendees: " + myAttendees;
+        document.body.appendChild(li6);
+        var breakline = document.createElement('br');
+        document.body.appendChild(breakline);
+            
     }
 }
+
     }
   
         
@@ -73,7 +99,8 @@
         
     }
     
-    </script> 
+    </script>  
+    
     <style>
       @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
         
