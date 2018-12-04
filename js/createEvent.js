@@ -1,21 +1,10 @@
-
-
+//firebase Reference.
 var root = firebase.database().ref().child('events');
-
 var groupRef = firebase.database().ref().child('groups');
-
 var groupNameArray =[];
 
-
-
-
-
-
-
 $('#createButton').click(function(){
-
-
-  
+    
 groupRef.on('value', function(snapshot) {
     var groupMembersArray = [];
     snapshot.forEach(function(childSnapshot) {
@@ -24,8 +13,7 @@ groupRef.on('value', function(snapshot) {
       groupNameArray.push(childData);
     });
     
-
-
+    // isValidGroups determine if the input group name exist in firebase.
     function isValidGroups(myArray){
         var tempCount = 0;
         for(var i = 0; i < myArray.length; i++){
@@ -38,10 +26,7 @@ groupRef.on('value', function(snapshot) {
         } else {
             return false;
         }
-    }
-    
-
-  
+    }  
 
   var myEventName = $('#eventName').val();
   var myLocation = $('#location').val();
@@ -49,7 +34,7 @@ groupRef.on('value', function(snapshot) {
   var myDescription = $('#description').val();
   var myGroup = $('#group').val();
   var isValidGroup = false;
-  var temp = myGroup.split(",");
+  var temp = myGroup.split(","); //temp stores groups in an array seprated by ",".
 
   groupRef.on('value', getAllMembers);
     function getAllMembers(log){
@@ -68,9 +53,7 @@ groupRef.on('value', function(snapshot) {
             }
         }
     }
-}
-
-  
+} 
     if (isValidGroups(temp)){
            root.push().set({
                 Event_Name: myEventName,
@@ -81,7 +64,6 @@ groupRef.on('value', function(snapshot) {
                 VoteCount : 0,
                 AllMembers : groupMembersArray
   })
-
   alert("Event successfully created!");
      } else {
          alert("Cannot find group(s)! Please check and invite group(s) again!");
