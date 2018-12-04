@@ -69,7 +69,7 @@ groupRef.on('value', function(snapshot) {
         }
     }
 }
-}
+
   
     if (isValidGroups(temp)){
            root.push().set({

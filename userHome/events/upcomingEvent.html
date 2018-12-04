@@ -39,17 +39,8 @@
     var AllMembersArray = [];
     var isValidUser = false;
         
-    var flatten = function(arr){
-        var flatMap = [];
-        arr.forEach(fucntion(value){
-                    if(Array.isArray(value)){
-            flatMap = flatMap.concat(flatten(value))
-        } else {
-            flatMap.push(value)
-        }
-    });
-}
-    
+
+        
         
     var now = new Date().valueOf();
     
@@ -70,7 +61,7 @@
         AllMembersArray.push(myAttendees);
         
         
-        console.log(flatten(AllMembersArray));
+        console.log((AllMembersArray));
         
         if(AllMembersArray.includes(myUser)){
             isValidUser = true;
