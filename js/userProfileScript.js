@@ -42,5 +42,5 @@ function eventPage(){
 }
 
 function signout(){
-  window.location = "../HomePage.html";
+  window.location = "../index.html";
 }
