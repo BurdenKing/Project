@@ -40,3 +40,7 @@ function eventPage(){
   var myUser = userNameString[1];
   window.location = "./events/eventHome.html?username=" + myUser;
 }
+
+function signout(){
+  window.location = "../HomePage.html";
+}

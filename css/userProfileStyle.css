@@ -30,7 +30,7 @@ html {
   float: left;
   text-align: center;
   margin-left: 10em;
-  margin-top: 2em;
+  margin-top: 0em;
 }
  
 #round {
@@ -48,7 +48,7 @@ html {
 }
 .edit {
   margin-top: 2.4em;
-  width: 150px;    
+  width: 140px;    
   filter: blur(1px);
   cursor: pointer;
 }
