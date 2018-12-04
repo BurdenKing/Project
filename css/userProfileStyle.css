@@ -1,5 +1,5 @@
 #fName, #lName, #interest{
-  margin-top: 10px;
+  margin-top: 30px;
 }
 body {
   background-color: #1F2833;
@@ -12,47 +12,57 @@ html {
   height: 100%;
 }
 #home {
-  text-align: center;
+  text-align: left;
   color: #66FCF1;
+  margin-left: 45px;
+  font-size: 60px;
 }
 .data {
   width: 66%;
-  height: 50%;
+  height: 90%;
   float: right;
   background-color: #0B0C10;
   color: aliceblue;
   border: 2px solid #C5C6C7;
+  margin-top: 2em;
 }
 .image {
-  width: 33%;
   float: left;
-  height: 75%;
   text-align: center;
+  margin-left: 10em;
+  margin-top: 2em;
 }
  
 #round {
-  width: 100px;
+  width: 150px;
   border-radius: 50%;
 }
 .persData {
   margin-left: 45px;
+  font-size: 25px;
 }
 .editButtons {
   position: relative;
   text-align: center;
 }
 .edit {
-  margin-top: 10px;
-  width: 100px;    
+  margin-top: 2.4em;
+  width: 150px;    
   filter: blur(1px);
   cursor: pointer;
-  border: 2px solid #66FCF1;
-  background-color: grey;
 }
 .edit:hover {
   background-color: #45A29E;
 }
-figcaption{
+
+figcaption {
   font-weight: bold;
   color: #C5C6C7;
+  font-size: 20pt;
+}
+
+.pers {
+  font-size: 25pt;
+  margin-left: 45px;
+  text-decoration: underline;
 }

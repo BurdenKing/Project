@@ -12,9 +12,9 @@ root.on('value', function(snap){
       var myFirst = childNodes.val().fName;
       var myLast = childNodes.val().lName;
       var int = childNodes.val().interest;
-      document.getElementById("fName").innerHTML = "<b>First Name</b> = " + myFirst;
-      document.getElementById("lName").innerHTML = "<b>Last Name</b> = " + myLast;
-      document.getElementById("interest").innerHTML = "<b>Interests</b> = " + int;
+      document.getElementById("fName").innerHTML = "<b>First Name:</b> " + myFirst;
+      document.getElementById("lName").innerHTML = "<b>Last Name:</b> " + myLast;
+      document.getElementById("interest").innerHTML = "<b>Interests:</b> " + int;
       document.getElementById("home").innerHTML = "Hello " + tempUser + ", Welcome to EventsGo."
     }
   }) 
