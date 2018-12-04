@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Creating an Event</title>
+    <title></title>
 	<meta charset="utf-8"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
       <script>
         // Initialize Firebase
@@ -15,219 +14,94 @@
           storageBucket: "comp1930project.appspot.com",
           messagingSenderId: "678746640473"
         };
-        firebase.initializeApp(config);  
+        firebase.initializeApp(config);
     </script>
     <style>
-      /* Importing heading text
-         - Not in Modal
-         - Same Text as Homepage
-      */
-      @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+      h1{
+ text-align: center;
+ color : #667292;
+  font-size: 35pt;
+}
+
+h2{
+  text-align: center;
+  color : #667292;
+}
+body {
+  margin: 0 auto;
+  background-color: #CFE0E8;
+  color: #66FCF1;
+  width: 38%;
+  height: 100%;
+  overflow-x: hidden;
+}
+#backButton{
+  background-color: #F9CCAC;
+  color: #667292;
+  border: 2px solid #667292;
+  margin-top: 10px;
+  width: 350px;
+  height: 40px;
+}
+#backButton:hover{
+  background-color: #D9AD7C;
+  cursor: pointer;      
+}
         
-      h1 {
-        font-size: 35pt;
-        color: #45A29E;
-        padding-top: 0em;
-        text-align: center;
-      }
+.backButton{
+  background-color: #F9CCAC;
+  color: #667292;
+  border: 2px solid #667292;
+  margin-top: 10px;
+  width: 350px;
+  height: 40px;
+}
+.backButton:hover{
+  background-color: #D9AD7C;
+  cursor: pointer;      
+}
         
-      body {
-	    background-color: #CFE0E8;
-        color: #66FCF1;
-	    width: 100%;
-		height: 100%;
-        overflow-x: hidden;
-	  }
-        
-      #submit {
-        margin-top: 1em;
-        text-align: center;      
-      }
-        
-      #content {
-        margin: 0 auto; 
-        width: 500px;
-        text-align: center;
-      }
-        
-      .info {
-        margin-top: 2em;
-        font-size: 15pt;
-        height: 40px;
-        width: 350px;
-        display: inline-block;
-        text-align: center;
-      }
-    
-      .infomain {
-        margin-top: 0em;
-        font-size: 15pt;
-        height: 40px;
-        width: 350px;
-        text-align: center;
-      }
-        
-      #background {
-        margin: 0 auto;
-        background-color: white;
-        padding-bottom: 2em;
-      }
-        
-      #back {
-        padding-top: 3em;
-        padding-left: 3em;
-        width: 5em;
-        height: 3em;
-        cursor: pointer;
-      }
-        
-      #button {
-        text-align: center;
-	    
-	  }
-        
-      #button:hover{
-        background-color: #d9ad7c;      
-      }
-        
-      #submit {
-        margin: 0 auto;
-      }
-        
-      #myBtn {
-	    background-color: #F9CCAC;
-        border: 2px solid #667292;
-        color: #667292;
-		cursor: pointer;
-		font-size: 20px;
-		text-align: center;
-		padding: 5px 5px;
-		margin-top: 1em;
-		width: 350px;
-        height: 40px;
-	  }
-        
-      #myBtn:hover{
-        background-color: #d9ad7c;      
-      }
-        
-      #BackBtn {
-	    background-color: #F9CCAC;
-        border: 2px solid #667292;
-        color: #667292;
-		cursor: pointer;
-		font-size: 20px;
-		text-align: center;
-		padding: 5px 5px;
-		margin-top: 2em;
-		width: 350px;
-        height: 40px;
-	  }
-        
-      #BackBtn:hover{
-        background-color: #d9ad7c;      
-      }
-        
-        
-      #createButton {
-	    background-color: #0B0C10;
-        border: 2px solid #66FCF1;
-        color: #C5C6C7;
-		cursor: pointer;
-		font-size: 20px;
-		text-align: center;
-		padding: 5px 5px;
-		margin-top: 2em;
-		width: 350px;
-        height: 40px;
-	  }
-        
-      #Btn:hover{
-        background-color: #45A29E;      
-      }
-      /* The Modal (background) */
-      .modal {
-        margin: 0 auto;
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        margin-top: 4em;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-      }
-      /* Modal Content/Box */
-      .modal-content {
-        margin: 0 auto;
-        background-color: #fefefe;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 40%; /* Could be more or less, depending on screen size */
-      }
-      /* The Close Button */
-      .close {
-        color: #45A29E;
-        float: right;
-        font-size: 28px;
-        font-weight: 900;
-      }
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
+#back {
+  margin-top: 3em;
+  text-align: center;
+}
+#submit{
+  margin-top: 1em;
+  text-align: center;      
+}
+#content {
+  margin: 0 auto; 
+  width: 500px;
+  text-align: center;
+  
+}
+.info {
+  margin-top: 2em;
+  margin-left: 10px;
+  font-size: 15pt;
+  height: 40px;
+  width: 350px;
+  display: inline-block;
+}
+
+#background {
+  border: 2px solid #667292;
+  background-color: white;
+  margin-top: 4em;
+  padding-bottom: 50px;
+}  
+
+
       
-      /* For the button that opens the modal */
-      #forMainButton {
-        text-align: center;
-      }
-        
-      #text {
-        text-align: center;
-        color: #667292;
-        font-size: 60pt;
-        margin-top: 0.5em;
-        font-weight: 900;
-        font-family: 'Abril Fatface', cursive;
-        letter-spacing: 3px;
-      }
-        
-      #center {
-        text-align: center;
-      }
+      
     </style>
+    <link rel="stylesheet" href="../../css/editPageStyle.css">
   </head>
   <body>
-      <header>
-        <h1 id="text">Events</h1>
-      </header>
-          
-      <div id="forMainButton">
-      <!-- Trigger/Open The Modal -->
-      <button id="myBtn"> Create Event </button>
-      </div>
-      
-      <!-- Back Button -->
-      <div id="center">
-        <button id="BackBtn">Back</button>
-      </div>
-          
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-      <span class="close">&times;</span>
+      <div id="background">
+      <h1>Create New Event</h1>
       <div id="content">
-        <div id="background">
-        <h1>Event</h1>
-        <!-- Event Name -->
-        <input class="infomain" id="eventName" type="text"  name="name" placeholder="Name" pattern="[A-Za-z]{2,20}" required="required"/>
+        <input class="info" id="eventName" type="text"  name="name" placeholder="Name" pattern="[A-Za-z]{2,20}" required="required"/>
         <!-- Location -->
         <input class="info" id="location" type="text" name="name"  placeholder="Location" pattern="[A-Za-z]{2,20}" required="required"/>
         <!-- Date and Time -->
@@ -236,12 +110,19 @@
         <input class="info" type="text" id="description" name="name" placeholder="Description" pattern="[A-Za-z]{6,20}" required="required"/>
         <!-- Group -->(
         <input class ="info" id = "group" type = "text" name ="name" placeholder = "Enter inviting group(s), seperated by ," required = "requried"/>
-        <!-- Button -->
-        <button id="createButton">Create New Event</button>
       </div>
+      <span class="arrow arrow-left curve-right"><span class="curve"></span></span>
+      <div id="back">
+        <input type="submit" id="backButton" value="BACK HOME" onclick="goBack()">
       </div>
+      <div id="submit">
+        <input type="submit" id="createButton" value="SUBMIT" class="backButton" onclick="readData()">
       </div>
+           
       </div>
+    <script src="../../js/editPageScript.js"></script> 
+      
+  <footer></footer>
     <script>
       // Get the modal
       var modal = document.getElementById('myModal');
