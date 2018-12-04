@@ -92,8 +92,10 @@
         #add {
           width: 350px;
           height: 40px;
+          
           text-align: center;
           margin-top: 2em;
+          
         }
       
         .home2 {
@@ -106,6 +108,8 @@
       
         .groupList {
           font-size: 18pt;
+          list-style-position: inside;
+          text-align: center;
         }
       
         .buttons {

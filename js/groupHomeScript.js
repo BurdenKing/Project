@@ -88,12 +88,13 @@ document.getElementById("add").onclick = function(){
         var tempUser = childNodes.val().username;
         var tempFirst = childNodes.val().fName;
         var tempLast = childNodes.val().lName;
-      
+        var count = 0;
         if (inputUser === tempUser){
           var myPop = document.getElementById('popup1');
           var list = document.createElement('li');
-          list.appendChild(document.createTextNode(inputUser + ", " + tempFirst + " " + tempLast));
+          list.innerHTML = inputUser + ", " + tempFirst + " " + tempLast;
           list.setAttribute("class", "groupList");
+          myPop.setAttribute("class", "center");
           myPop.append(list);
           userFoundDB = "true";
         }
