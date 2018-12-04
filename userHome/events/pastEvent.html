@@ -60,7 +60,7 @@
         
         for (var j = 0; j < AllMembersArray.length; j++){
             console.log(AllMembersArray[j]);
-            if((AllMembersArray[j].join().includes(myUser)) && (Date.parse(myDateAndTime) >= now )){
+            if((AllMembersArray[j].join().includes(myUser)) && (Date.parse(myDateAndTime) < now )){
                
         //construct body part. 
         var li = document.createElement('div');

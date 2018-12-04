@@ -53,10 +53,6 @@
         
         //loop through all keys in events and store different fields.
         var myEventName = events[k].Event_Name;
-        var myDateAndTime = events[k].DateAndTime;
-        var myLocation = events[k].Location;
-        var myGroup = events[k].Group;
-        var myDescription = events[k].Description;
         var myAttendees = events[k].AllMembers;
         var myVoteCount = events[k].VoteCount;
         
@@ -70,37 +66,21 @@
         
         for (var j = 0; j < AllMembersArray.length; j++){
             console.log(AllMembersArray[j]);
-            if((AllMembersArray[j].join().includes(myUser)) && (Date.parse(myDateAndTime) >= now )){
+            if(AllMembersArray[j].join().includes(myUser)){
                
         //construct body part. 
         var li = document.createElement('div');
                 li.innerHTML = myEventName + "<br/>"
-                             + "Date and Time : " + myDateAndTime + "<br/>"
-                             + "Location : " + myLocation + "<br/>"
-                             + "Description : " + myDescription + "<br/>"
-                             + "Group(s) : " + myGroup + "<br/>"
-                             + "Attendees :" + myAttendees + "<br/>"
+                             + "Votes: " + myVoteCount + "<br/>";
                 
         li.setAttribute("id","bodyNodes");
-        document.body.appendChild(li);  
-                
-        var voteButton = document.createElement('button');
-                voteButton.innerHTML ="This event is lit!";
-                voteButton.setAttribute("id","voteButton");
-                document.body.appendChild(voteButton);
-                
-        voteButton.onclick = function(){
-                console.log("called");
-                ref.child("" + k + "/VoteCount").set(myVoteCount + 1);
-                window.location = "./result.html?username=" + myUser;
-        };
+        document.body.appendChild(li);
+            }
         }
     }
-    }
-       
-}
-    </script>    
-    <style>
+        }
+        </script>
+            <style>
       @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
       
         #voteButton{
@@ -151,10 +131,9 @@
         </style>
     </head>
     <body>
-        <div>
         <header>
-            <h1 id="text">Upcoming Events and Vote</h1>
+    <h1 id="text">Thanks for Voting!</h1>
         </header>
-        </div>
     </body>
+    
 </html>

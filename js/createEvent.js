@@ -61,7 +61,6 @@ groupRef.on('value', function(snapshot) {
                 DateAndTime : myDateAndTime,
                 Description: myDescription,
                 Group: myGroup,
-                VoteCount : 0,
                 AllMembers : groupMembersArray
   })
   alert("Event successfully created!");
