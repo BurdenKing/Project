@@ -33,17 +33,19 @@
     
  
     var ref = database.ref().child('events');
+    
+    var AllMembersArray = [];
+    var isValidUser = false;
+    var tempCount = 0;
         
+    var now = new Date().valueOf();
     
-    ref.on('value', getEvent, errEvent);
-    
-    var now = new Date().valueOf();    
         
-    function getEvent(event){
-    var events = event.val();
-    var eventsArray = Object.keys(events);
-    
-       
+    ref.on('value',getData);
+        function getData(data){
+            var events = data.val();
+            var eventsArray = Object.keys(events);
+        
     for(var i = 0; i < eventsArray.length; i++){
         var k = eventsArray[i];
         var myEventName = events[k].Event_Name;
@@ -52,8 +54,24 @@
         var myGroup = events[k].Group;
         var myDescription = events[k].Description;
         var myAttendees = events[k].AllMembers;
-
-        if(Date.parse(myDateAndTime) >= now){
+        AllMembersArray.push(myAttendees);
+        
+       var finalArray = AllMembersArray.prototype.flat(2);
+        
+        console.log(finalArray);
+        
+        if(AllMembersArray.includes(myUser)){
+            isValidUser = true;
+        }
+//        for(var j = 0; j < AllMembersArray; j++){   
+//            if(AllMembersArray[j].includes(myUser)){
+//                isValidUser = true;
+//                break;
+//            } 
+//        }
+        
+        console.log(isValidUser);
+        if(Date.parse(myDateAndTime) >= now && isValidUser){
             
         var li = document.createElement('text');
         li.innerHTML = myEventName;
