@@ -25,10 +25,9 @@
       @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
         
       h1 {
-        font-size: 35pt;
-        color: #45A29E;
-        padding-top: 0em;
         text-align: center;
+ color : #667292;
+  font-size: 35pt;
       }
         
       body {
@@ -130,9 +129,9 @@
         
         
       #createButton {
-	    background-color: #0B0C10;
-        border: 2px solid #66FCF1;
-        color: #C5C6C7;
+	    background-color: #F9CCAC;
+        border: 2px solid #667292;
+        color: #667292;
 		cursor: pointer;
 		font-size: 20px;
 		text-align: center;
@@ -142,8 +141,8 @@
         height: 40px;
 	  }
         
-      #Btn:hover{
-        background-color: #45A29E;      
+      #createButton:hover{
+        background-color: #D9AD7C;      
       }
       /* The Modal (background) */
       .modal {
@@ -165,8 +164,9 @@
         margin: 0 auto;
         background-color: #fefefe;
         padding: 20px;
-        border: 1px solid #888;
+        border: 2px solid #667292;
         width: 40%; /* Could be more or less, depending on screen size */
+        margin-top: 4em;
       }
       /* The Close Button */
       .close {
@@ -203,24 +203,6 @@
     </style>
   </head>
   <body>
-      <header>
-        <h1 id="text">Events</h1>
-      </header>
-          
-      <div id="forMainButton">
-      <!-- Trigger/Open The Modal -->
-      <button id="myBtn"> Create Event </button>
-      </div>
-      
-      <!-- Back Button -->
-      <div id="center">
-        <button id="BackBtn">Back</button>
-      </div>
-          
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
-
-      <!-- Modal content -->
       <div class="modal-content">
       <span class="close">&times;</span>
       <div id="content">
