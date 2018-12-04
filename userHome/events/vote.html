@@ -30,22 +30,9 @@ var config = {
     
  
     var ref = database.ref().child('events');
-    var isValidUser = false;
-        
-    ref.on('value', function(snap){
-        snap.forEach(function(snapChild){
-            myMemberList = snapChild.val().AllMembers;
-            for(var i = 0; i < myMemberList.length; i++){
-                if (myMemberList[i].includes(myUser)){
-                    isValidUser = true;
-                }
-            }
-        })
-    })
 
-    var eventsArray = [];
-    var voteCountArray = [];
-    
+        
+
 
     var now = new Date().valueOf();
         
@@ -79,8 +66,11 @@ var config = {
         Btn.setAttribute("type", "button");
         Btn.setAttribute("value", "vote");
         Btn.setAttribute("id", "voteBtn");
+        Btn.setAttribute("onClick", myOnClick);
         
-        
+        function myOnClick{
+            
+        }
     document.body.appendChild(Btn);
     }
 
@@ -93,6 +83,8 @@ var config = {
     document.body.appendChild(myBtn);
     
      myBtn.onclick = function(){
+         ref.on('value', getData);
+         function get
     var lineBreak = document.createElement('br');
     document.body.appendChild(lineBreak);
     ref.on('value', function(snapshot) {  

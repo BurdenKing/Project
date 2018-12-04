@@ -1,16 +1,10 @@
-
 <!DOCTYPE html>
+
 <html lang = "en">
     <head>
     <title>Upcoming Events</title>
     <meta charset="utf-8"/>    
-    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-
-
-
-
-        
-        
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>               
     <script>
     // Initialize Firebase
     var config = {
@@ -23,25 +17,21 @@
     };
     firebase.initializeApp(config); 
     
+    //firebase reference.
     var database = firebase.database();
     
+    //Grab the userName from url.    
     var myURL = window.location.href;
     var myUserURL = myURL.split("?");
     var userNameString = myUserURL[1].split("=");
     var myUser = userNameString[1];
     
     
- 
-    var ref = database.ref().child('events');
-    
-
-    
-    var AllMembersArray = [];
-    var isValidUser = false;
-        
+    // root ref to firebase.
+    var ref = database.ref().child('events'); 
 
         
-        
+    //now is the present time coverts into mili secs.    
     var now = new Date().valueOf();
     
         
@@ -51,80 +41,44 @@
             var eventsArray = Object.keys(events);
         
     for(var i = 0; i < eventsArray.length; i++){
+        
+        var AllMembersArray = [];
+        
+        //Array for all keys under child 'events'.
         var k = eventsArray[i];
+        
+        //loop through all keys in events and store different fields.
         var myEventName = events[k].Event_Name;
         var myDateAndTime = events[k].DateAndTime;
         var myLocation = events[k].Location;
         var myGroup = events[k].Group;
         var myDescription = events[k].Description;
         var myAttendees = events[k].AllMembers;
+        
+        //An array of all attendees for one event.
         AllMembersArray.push(myAttendees);
         
-        
-        console.log((AllMembersArray));
-        
-        if(AllMembersArray.includes(myUser)){
-            isValidUser = true;
+        for (var j = 0; j < AllMembersArray.length; j++){
+            console.log(AllMembersArray[j]);
+            if((AllMembersArray[j].join().includes(myUser)) && (Date.parse(myDateAndTime) >= now )){
+               
+        //construct body part. 
+        var li = document.createElement('div');
+                li.innerHTML = myEventName + "<br/>"
+                             + "Date and Time : " + myDateAndTime + "<br/>"
+                             + "Location : " + myLocation + "<br/>"
+                             + "Description : " + myDescription + "<br/>"
+                             + "Group(s) : " + myGroup + "<br/>"
+                             + "Attendees :" + myAttendees + "<br/>"
+                
+        li.setAttribute("id","bodyNodes");
+        document.body.appendChild(li);       
+            }
         }
-//        for(var j = 0; j < AllMembersArray; j++){   
-//            if(AllMembersArray[j].includes(myUser)){
-//                isValidUser = true;
-//                break;
-//            } 
-//        }
-        
-        console.log(isValidUser);
-        if(Date.parse(myDateAndTime) >= now && isValidUser){
-            
-        var li = document.createElement('text');
-        li.innerHTML = myEventName;
-        var breakline = document.createElement('br');
-        document.body.appendChild(breakline);
-            
-        document.body.appendChild(li);
-        document.body.appendChild(breakline);
-         
-
-
-        var li2 = document.createElement('text');
-        li2.innerHTML = "Location: " + myLocation;
-        document.body.appendChild(li2);
-        var breakline = document.createElement('br');
-        document.body.appendChild(breakline);
-        
-        var li3 = document.createElement('text');
-        li3.innerHTML = "Group(s): " + myGroup;
-        document.body.appendChild(li3);
-        var breakline = document.createElement('br');
-        document.body.appendChild(breakline);
-
-        var li4 = document.createElement('text');
-        li4.innerHTML = "Date and Time: " + myDateAndTime;
-        document.body.appendChild(li4);
-        var breakline = document.createElement('br');
-        document.body.appendChild(breakline);
-
-        var li5 = document.createElement('text');
-        li5.innerHTML = "Desciptions: " + myDescription;
-        document.body.appendChild(li5);
-        var breakline = document.createElement('br');
-        document.body.appendChild(breakline);
-
-        var li6 = document.createElement('text');
-        li6.innerHTML = "Attendees: " + myAttendees;
-        document.body.appendChild(li6);
-        var breakline = document.createElement('br');
-        document.body.appendChild(breakline);
-            
     }
 }
-
-
         
-
-    }
-  
-        
+    //Alert for failure of retrieving data from firebase.    
     function errEvent(err){
         alert("Error!");
         
@@ -133,10 +87,20 @@
     </script>    
     <style>
       @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
-       
+      
+        #bodyNodes{
+        text-align : center;
+        border : solid 2px #667292;
+        width : 40%;
+        margin-left : 30%;
+        background-color : white;
+        font-size : 18pt;
+        margin-bottom: 1.25em;
+        }
      
     
       body {
+        align-self: center;
 	    background-color: #CFE0E8;
         color: #667292;
 	    width: 100%;
@@ -152,13 +116,14 @@
         font-weight: 900;
         font-family: 'Abril Fatface', cursive;
         letter-spacing: 3px;
-      }
-        
-    </style>
+      }     
+        </style>
     </head>
     <body>
-    <header>
-      <h1 id="text">Upcoming Events</h1>
-    </header>
+        <div>
+        <header>
+            <h1 id="text">Upcoming Events</h1>
+        </header>
+        </div>
     </body>
 </html>
