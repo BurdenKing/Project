@@ -1,6 +1,7 @@
 h1{
  text-align: center;
  color : #667292;
+  font-size: 35pt;
 }
 
 h2{
@@ -8,9 +9,10 @@ h2{
   color : #667292;
 }
 body {
+  margin: 0 auto;
   background-color: #CFE0E8;
   color: #66FCF1;
-  width: 100%;
+  width: 38%;
   height: 100%;
   overflow-x: hidden;
 }
@@ -47,4 +49,11 @@ body {
   height: 40px;
   width: 350px;
   display: inline-block;
+}
+
+#background {
+  border: 2px solid #667292;
+  background-color: white;
+  margin-top: 4em;
+  padding-bottom: 50px;
 }

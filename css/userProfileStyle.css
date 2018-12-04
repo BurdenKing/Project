@@ -2,7 +2,7 @@
   margin-top: 30px;
 }
 body {
-  background-color: #1F2833;
+  background-color: #CFE0E8;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -13,7 +13,7 @@ html {
 }
 #home {
   text-align: left;
-  color: #66FCF1;
+  color: #667292;
   margin-left: 45px;
   font-size: 60px;
 }
@@ -21,9 +21,9 @@ html {
   width: 66%;
   height: 90%;
   float: right;
-  background-color: #0B0C10;
+  background-color: white;
   color: aliceblue;
-  border: 2px solid #C5C6C7;
+  border: 2px solid #667292;
   margin-top: 2em;
 }
 .image {
@@ -40,6 +40,7 @@ html {
 .persData {
   margin-left: 45px;
   font-size: 25px;
+  color: #667292;
 }
 .editButtons {
   position: relative;
@@ -52,12 +53,12 @@ html {
   cursor: pointer;
 }
 .edit:hover {
-  background-color: #45A29E;
+  background-color: #D9AD7C;
 }
 
 figcaption {
   font-weight: bold;
-  color: #C5C6C7;
+  color: #667292;
   font-size: 20pt;
 }
 
@@ -65,4 +66,5 @@ figcaption {
   font-size: 25pt;
   margin-left: 45px;
   text-decoration: underline;
+  color : #667292;
 }
