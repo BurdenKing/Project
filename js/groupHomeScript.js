@@ -32,8 +32,8 @@ dispGroup.on('value', function(snap){
       myDiv.setAttribute("class", "groups1");
       myDiv.setAttribute("id", "group" + count);
       myDiv.setAttribute("onclick", "processGroup('" + groupName + "')");
-      var nodeGroupName = document.createTextNode("Group " + count + ": " + groupName);
-      var nodeCreator = document.createTextNode("Group Creator: " + groupCreate);
+      var nodeGroupName = document.createTextNode("Group #" + count + ": " + groupName);
+      var nodeCreator = document.createTextNode("Group Host: " + groupCreate);
       var nodeMembers = document.createTextNode("Group Members: " + memberList);
       myDiv.appendChild(nodeGroupName);
       myDiv.appendChild(document.createElement("br"));
