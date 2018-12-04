@@ -5,57 +5,71 @@
 <meta charset = "utf-8">
   <style>
     body {
-      background-color: #1F2833;
-      color: #66FCF1;
+      background-color: #CFE0E8;
+      color: #667292;
       text-align: center;
     }
     h1 {
-      font-size: 3em;
+      font-size: 60pt;
+      margin-top: 0.5em;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color : #667292;
+     
     }
+    
+    figcaption {
+      font-weight: bold;
+      color : #667292;
+      font-size: 20pt;
+      }  
     .middleDivs {
       width: 33%;
       float: left;
       height: auto;
-      color: black;
-      background-color: #C5C6C7;
-      border: 2px solid #66FCF1;
+      color: #667292;
+      background-color: #FFFFFF;
+      border: 2px solid #667292;
     }
     .middleDivs:hover {
-      background-color: #45A29E;
+      background-color: #D9AD7C;
       cursor: pointer;
     }
     .button {
-      background-color: #0B0C10;
-      color: #C5C6C7;
-      border: 2px solid #66FCF1;
+      background-color: #F9CCAC;
+      color: #667292;
+      border: 2px solid #667292;
       margin-top: 40px;
       width: 350px;
       height: 40px;
     }
     .button:hover {
-      background-color: #45A29E;
+      background-color: #D9AD7C;
       cursor: pointer;
     }
     .eventImgs {
-      width: 33%;
-      height: 25%;
-      padding-top: 10px;
+      width: 60%;
+      height: 45%;
+      padding: 40px;
     }
   </style>
 </head>
 <body>
+  <header>
   <h1>Events Page</h1>
-  <div id='createEvent' class='middleDivs' onclick="goCreate()">
+  </header>
+  
+<div id='createEvent' class='middleDivs' onclick="goCreate()">
     <img class='eventImgs' src="../../images/createEvent.png" />
-    <h2>Create an Event</h2>
+    <figcaption>Create an Event</figcaption>
   </div>
   <div id='upcomingEvent' class='middleDivs' onclick="goUpcoming()">
     <img class='eventImgs' src="../../images/calendarNext.png" />
-    <h2>View Upcoming Events</h2>
+    <figcaption>View Upcoming Events</figcaption>
   </div>
   <div id='pastEvent' class='middleDivs' onclick="goPast()">
     <img class='eventImgs' src='../../images/calendarBack.png' />
-    <h2>View Past Events</h2>
+    <figcaption>View Past Events</figcaption>
   </div>
   <input type="submit" id="back" class="button" value="BACK HOME" onclick="goBack()">
   <script>

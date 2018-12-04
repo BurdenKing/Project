@@ -38,7 +38,18 @@
     
     var AllMembersArray = [];
     var isValidUser = false;
-    var tempCount = 0;
+        
+    var flatten = function(arr){
+        var flatMap = [];
+        arr.forEach(fucntion(value){
+                    if(Array.isArray(value)){
+            flatMap = flatMap.concat(flatten(value))
+        } else {
+            flatMap.push(value)
+        }
+    });
+}
+    
         
     var now = new Date().valueOf();
     
@@ -59,7 +70,7 @@
         AllMembersArray.push(myAttendees);
         
         
-        console.log(flat(AllMembersArray));
+        console.log(flatten(AllMembersArray));
         
         if(AllMembersArray.includes(myUser)){
             isValidUser = true;
@@ -131,10 +142,12 @@
     </script>    
     <style>
       @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
-        
+       
+     
+    
       body {
-	    background-color: #1F2833;
-        color: #66FCF1;
+	    background-color: #CFE0E8;
+        color: #667292;
 	    width: 100%;
 		height: 100%;
         overflow-x: hidden;
@@ -142,12 +155,12 @@
         
       #text {
         text-align: center;
-        color: #66FCF1;
-        font-size: 7em;
+        color: #667292;
+        font-size: 60pt;
         margin-top: 0.5em;
         font-weight: 900;
         font-family: 'Abril Fatface', cursive;
-        letter-spacing: 7px;
+        letter-spacing: 3px;
       }
         
     </style>
