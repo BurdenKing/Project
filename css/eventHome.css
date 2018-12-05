@@ -1,0 +1,53 @@
+body {
+  background-color: #CFE0E8;
+  color: #667292;
+  text-align: center;
+}
+
+h1 {
+  font-size: 60pt;
+  margin-top: 0.5em;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color : #667292;
+}
+
+figcaption {
+  font-weight: bold;
+  color : #667292;
+  font-size: 20pt;
+}
+
+.middleDivs {
+  width: 33%;
+  float: left;
+  height: auto;
+  color: #667292;
+  background-color: #FFFFFF;
+  border: 2px solid #667292;
+}
+
+.middleDivs:hover {
+  background-color: #D9AD7C;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #F9CCAC;
+  color: #667292;
+  border: 2px solid #667292;
+  margin-top: 40px;
+  width: 350px;
+  height: 40px;
+}
+
+.button:hover {
+  background-color: #D9AD7C;
+  cursor: pointer;
+}
+
+.eventImgs {
+  width: 60%;
+  height: 45%;
+  padding: 40px;
+}

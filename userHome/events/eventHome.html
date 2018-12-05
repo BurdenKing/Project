@@ -1,79 +1,28 @@
-<!-- Event page-->
 <DOCTYPE! html>
-<head>
-<title>Events Page</title>
-<meta charset = "utf-8">
-  <style>
-    body {
-      background-color: #CFE0E8;
-      color: #667292;
-      text-align: center;
-    }
-    h1 {
-      font-size: 60pt;
-      margin-top: 0.5em;
-      font-weight: 900;
-      letter-spacing: 3px;
-      color : #667292;
-     
-    }
-    
-    figcaption {
-      font-weight: bold;
-      color : #667292;
-      font-size: 20pt;
-      }  
-    .middleDivs {
-      width: 33%;
-      float: left;
-      height: auto;
-      color: #667292;
-      background-color: #FFFFFF;
-      border: 2px solid #667292;
-    }
-    .middleDivs:hover {
-      background-color: #D9AD7C;
-      cursor: pointer;
-    }
-    .button {
-      background-color: #F9CCAC;
-      color: #667292;
-      border: 2px solid #667292;
-      margin-top: 40px;
-      width: 350px;
-      height: 40px;
-    }
-    .button:hover {
-      background-color: #D9AD7C;
-      cursor: pointer;
-    }
-    .eventImgs {
-      width: 60%;
-      height: 45%;
-      padding: 40px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-  <h1>Events Page</h1>
-  </header>
-  
-<div id='createEvent' class='middleDivs' onclick="goCreate()">
-    <img class='eventImgs' src="../../images/createEvent.png" />
-    <figcaption>Create an Event</figcaption>
-  </div>
-  <div id='upcomingEvent' class='middleDivs' onclick="goUpcoming()">
-    <img class='eventImgs' src="../../images/calendarNext.png" />
-    <figcaption>View Upcoming Events</figcaption>
-  </div>
-  <div id='pastEvent' class='middleDivs' onclick="goPast()">
-    <img class='eventImgs' src='../../images/calendarBack.png' />
-    <figcaption>View Past Events</figcaption>
-  </div>
-  <input type="submit" id="back" class="button" value="BACK HOME" onclick="goBack()">
-  <script>
-    
+<html lang="en">
+  <head>
+    <title>Events Page</title>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" type="text/css" href ="../../css/eventHome.css">
+  </head>
+  <body>
+    <header>
+      <h1>Events Page</h1>
+    </header>
+    <div id='createEvent' class='middleDivs' onclick="goCreate()">
+      <img class='eventImgs' src="../../images/createEvent.png" />
+      <figcaption>Create an Event</figcaption>
+    </div>
+    <div id='upcomingEvent' class='middleDivs' onclick="goUpcoming()">
+      <img class='eventImgs' src="../../images/calendarNext.png" />
+      <figcaption>View Upcoming Events</figcaption>
+    </div>
+    <div id='pastEvent' class='middleDivs' onclick="goPast()">
+      <img class='eventImgs' src='../../images/calendarBack.png' />
+      <figcaption>View Past Events</figcaption>
+    </div>
+    <input type="submit" id="back" class="button" value="BACK HOME" onclick="goBack()">
+    <script>
     function goBack() {  
       var myURL = window.location.href;
       var myUserURL = myURL.split("?");
@@ -104,3 +53,4 @@
     }
   </script>
 </body>
+</html>
