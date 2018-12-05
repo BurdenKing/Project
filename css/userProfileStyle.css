@@ -1,22 +1,26 @@
 #fName, #lName, #interest{
   margin-top: 30px;
 }
+
 body {
   background-color: #CFE0E8;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
+
 html {
   width: 100%;
   height: 100%;
 }
+
 #home {
   text-align: left;
   color: #667292;
   margin-left: 45px;
   font-size: 60px;
 }
+
 .data {
   width: 66%;
   height: 90%;
@@ -26,6 +30,7 @@ html {
   border: 2px solid #667292;
   margin-top: 2em;
 }
+
 .image {
   float: left;
   text-align: center;
@@ -37,21 +42,25 @@ html {
   width: 150px;
   border-radius: 50%;
 }
+
 .persData {
   margin-left: 45px;
   font-size: 25px;
   color: black;
 }
+
 .editButtons {
   position: relative;
   text-align: center;
 }
+
 .edit {
   margin-top: 2.95em;
   width: 140px;    
   filter: blur(1px);
   cursor: pointer;
 }
+
 .edit:hover {
   background-color: #D9AD7C;
 }
