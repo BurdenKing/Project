@@ -3,7 +3,8 @@
 <html lang = "en">
     <head>
     <title>Past Events</title>
-    <meta charset="utf-8"/>    
+    <meta charset="utf-8"/> 
+    <link rel ="stylesheet" type ="text/css" href = "../../css/pastEvent.css">
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>               
     <script>
     // Initialize Firebase
@@ -15,115 +16,15 @@
     storageBucket: "comp1930project.appspot.com",
     messagingSenderId: "678746640473"
     };
-    firebase.initializeApp(config); 
-    
-    //firebase reference.
-    var database = firebase.database();
-    
-    //Grab the userName from url.    
-    var myURL = window.location.href;
-    var myUserURL = myURL.split("?");
-    var userNameString = myUserURL[1].split("=");
-    var myUser = userNameString[1];
-    
-    
-    // root ref to firebase.
-    var ref = database.ref().child('events'); 
-
-        
-    //now is the present time coverts into mili secs.    
-    var now = new Date().valueOf();
-    
-        
-    ref.on('value',getData);
-        function getData(data){
-            var events = data.val();
-            var eventsArray = Object.keys(events);
-        
-    for(var i = 0; i < eventsArray.length; i++){
-        
-        var AllMembersArray = [];
-        
-        //Array for all keys under child 'events'.
-        var k = eventsArray[i];
-        
-        //loop through all keys in events and store different fields.
-        var myEventName = events[k].Event_Name;
-        var myDateAndTime = events[k].DateAndTime;
-        var myLocation = events[k].Location;
-        var myGroup = events[k].Group;
-        var myDescription = events[k].Description;
-        var myAttendees = events[k].AllMembers;
-        
-        //An array of all attendees for one event.
-        AllMembersArray.push(myAttendees);
-        
-        for (var j = 0; j < AllMembersArray.length; j++){
-            console.log(AllMembersArray[j]);
-            if((AllMembersArray[j].join().includes(myUser)) && (Date.parse(myDateAndTime) < now )){
-               
-        //construct body part. 
-        var li = document.createElement('div');
-                li.innerHTML = myEventName + "<br/>"
-                             + "Date and Time : " + myDateAndTime + "<br/>"
-                             + "Location : " + myLocation + "<br/>"
-                             + "Description : " + myDescription + "<br/>"
-                             + "Group(s) : " + myGroup + "<br/>"
-                             + "Attendees :" + myAttendees + "<br/>"
-                
-        li.setAttribute("id","bodyNodes");
-        document.body.appendChild(li);       
-            }
-        }
-    }
-}
-        
-    //Alert for failure of retrieving data from firebase.    
-    function errEvent(err){
-        alert("Error!");
-        
-    }
-    
-    </script>    
-    <style>
-      @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
-      
-        #bodyNodes{
-        text-align : center;
-        border : solid 2px #667292;
-        width : 40%;
-        margin-left : 30%;
-        background-color : white;
-        font-size : 18pt;
-        margin-bottom: 1.25em;
-        }
-     
-    
-      body {
-        align-self: center;
-	    background-color: #CFE0E8;
-        color: #667292;
-	    width: 100%;
-		height: 100%;
-        overflow-x: hidden;
-	  }
-        
-      #text {
-        text-align: center;
-        color: #667292;
-        font-size: 60pt;
-        margin-top: 0.5em;
-        font-weight: 900;
-        font-family: 'Abril Fatface', cursive;
-        letter-spacing: 3px;
-      }     
-        </style>
+    firebase.initializeApp(config);     
+    </script>
+    <script src ="../../js/pastEvent.js"></script>
     </head>
     <body>
-        <div>
+      <div>
         <header>
-            <h1 id="text">Past Events</h1>
+          <h1 id="text">Past Events</h1>
         </header>
-        </div>
+      </div>
     </body>
 </html>
