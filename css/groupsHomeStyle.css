@@ -1,162 +1,162 @@
-       @import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 
-        body {
-          background-color: #CFE0E8;   
-        }
-        h1 {
-          text-align: center;
-          color: #667292;
-          font-size: 5em;
-          margin-top: 0.5em;
-          font-weight: 900;
-          font-family: 'Abril Fatface', cursive;
-          letter-spacing: 7px;
-        }
-      
-        h2{
-          color: #C5C6C7;
-          text-align: center;
-          margin-top: 3em;
-        }
-      
-        .button:hover {
-          background-color: #D9AD7C;
-          cursor: pointer;
-        }
-      
-        .button {
-          background-color: #F9CCAC;
-          color: #667292;
-          border: 2px solid #667292;
-          margin-top: 2em;
-          width: 350px;
-          height: 40px;
-        }
-      
-      
-        .modal {
-          display: none; /* Hidden by default */
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Sit on top */
-          padding-top: 100px; /* Location of the box */
-          left: 0;
-          top: 0;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow: auto; /* Enable scroll if needed */
-          background-color: rgb(0,0,0); /* Fallback color */
-          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-      
-        .modal-content, .edit-content {
-          color: #667292;
-          background-color: white;
-          overflow: auto;
-          margin: 0 auto;
-          height: 500px;
-          padding: 20px;
-          border: 2px solid #667292;
-          width: 80%;
-          text-align: center;
-        }
-      
-        .editText{
-          text-align: left;
-          font-size: 18px;
-        }
-      
-        .close {
-          color: #aaaaaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-        }
-      
+body {
+  background-color: #CFE0E8;   
+}
+h1 {
+  text-align: center;
+  color: #667292;
+  font-size: 5em;
+  margin-top: 0.5em;
+  font-weight: 900;
+  font-family: 'Abril Fatface', cursive;
+  letter-spacing: 7px;
+}
 
-        .close:hover, .close:focus {
-          color: #000;
-          text-decoration: none;
-          cursor: pointer;
-        }
-      
-        div input {
-          width: 80%;
-        }
-      
-        .content{
-          height: 40px;
-          width: 350px;
-          font-size: 15px;
-        }
-      
-        #add {
-          width: 350px;
-          height: 40px;
-          
-          text-align: center;
-          margin-top: 2em;
-          
-        }
-      
-        .home2 {
-          font-size: 35pt; 
-        }
-      
-        #popup1 {
-          text-align: left;
-        }
-      
-        .groupList {
-          font-size: 18pt;
-          list-style-position: inside;
-          text-align: center;
-        }
-      
-        .buttons {
-          text-align: center;
-        }
-      
-        #groups {
-          font-size: 15pt;
-          margin-top: 1em;
-          margin-bottom: 1em;
-        }
-        .groups1 {
-          font-size: 18pt;
-          margin-top: 2em;
-          padding: 10px;
-          margin-bottom: 1em;
-          color: #667292;
-          background-color: white; 
-          border: 2px solid #667292;
-          width: 500px;
-          margin: 0 auto;
-          margin-bottom: 1.25em;
-        }
-      
-        .groups1:hover {
-          background-color: #D9AD7C;
-          cursor: pointer;
-        }
-        .listMember {
-          font-size: 13pt;
-          margin: 0 auto;
-          margin-top: 1em;
-          
-          padding: 10px;
-          margin-bottom: 1.25em;
-          color: black;
-          background-color: white; 
-          border: 2px solid #667292;
+h2{
+  color: #C5C6C7;
+  text-align: center;
+  margin-top: 3em;
+}
 
-          width: 150px;
-        }
-      
-        .listMember:hover {
-          background-color: #D9AD7C;
-          cursor: pointer;
-        }
-      
-        .editText {
-          text-align: center;
-        } 
+.button:hover {
+  background-color: #D9AD7C;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #F9CCAC;
+  color: #667292;
+  border: 2px solid #667292;
+  margin-top: 2em;
+  width: 350px;
+  height: 40px;
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content, .edit-content {
+  color: #667292;
+  background-color: white;
+  overflow: auto;
+  margin: 0 auto;
+  height: 500px;
+  padding: 20px;
+  border: 2px solid #667292;
+  width: 80%;
+  text-align: center;
+}
+
+.editText{
+  text-align: left;
+  font-size: 18px;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+div input {
+  width: 80%;
+}
+
+.content{
+  height: 40px;
+  width: 350px;
+  font-size: 15px;
+}
+
+#add {
+  width: 350px;
+  height: 40px;
+  
+  text-align: center;
+  margin-top: 2em;
+  
+}
+
+.home2 {
+  font-size: 35pt; 
+}
+
+#popup1 {
+  text-align: left;
+}
+
+.groupList {
+  font-size: 18pt;
+  list-style-position: inside;
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
+}
+
+#groups {
+  font-size: 15pt;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.groups1 {
+  font-size: 18pt;
+  margin-top: 2em;
+  padding: 10px;
+  margin-bottom: 1em;
+  color: #667292;
+  background-color: white; 
+  border: 2px solid #667292;
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 1.25em;
+}
+
+.groups1:hover {
+  background-color: #D9AD7C;
+  cursor: pointer;
+}
+.listMember {
+  font-size: 13pt;
+  margin: 0 auto;
+  margin-top: 1em;
+  
+  padding: 10px;
+  margin-bottom: 1.25em;
+  color: black;
+  background-color: white; 
+  border: 2px solid #667292;
+
+  width: 150px;
+}
+
+.listMember:hover {
+  background-color: #D9AD7C;
+  cursor: pointer;
+}
+
+.editText {
+  text-align: center;
+} 

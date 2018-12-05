@@ -40,16 +40,16 @@ function readData() {
         var newInt = document.getElementById("interest").value;
         var newPwd = document.getElementById("inputPass").value;
         if (newFirst !== ""){
-            childNodes.ref.update({fName: newFirst});
+          childNodes.ref.update({fName: newFirst});
         }
         if (newLast !== ""){
-            childNodes.ref.update({lName: newLast});
+          childNodes.ref.update({lName: newLast});
         }
         if (newInt !== ""){
-            childNodes.ref.update({interest: newInt});
+          childNodes.ref.update({interest: newInt});
         }
         if (newPwd !== ""){
-            childNodes.ref.update({password: newPwd});
+          childNodes.ref.update({password: newPwd});
         }
       }
     })

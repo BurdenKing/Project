@@ -5,70 +5,70 @@ var groupNameArray =[];
 
 $('#createButton').click(function(){
     
-groupRef.on('value', function(snapshot) {
+  groupRef.on('value', function(snapshot) {
     var groupMembersArray = [];
     snapshot.forEach(function(childSnapshot) {
-        console.log(childSnapshot.val());
+      console.log(childSnapshot.val());
       var childData = childSnapshot.val().groupName;
       groupNameArray.push(childData);
     });
     
     // isValidGroups determine if the input group name exist in firebase.
     function isValidGroups(myArray){
-        var tempCount = 0;
-        for(var i = 0; i < myArray.length; i++){
-            if(groupNameArray.includes(myArray[i])){
-                tempCount ++;
-            }
+      var tempCount = 0;
+      for(var i = 0; i < myArray.length; i++){
+        if(groupNameArray.includes(myArray[i])){
+          tempCount ++;
         }
-        if (tempCount == myArray.length){
+      }
+      if (tempCount == myArray.length){
         return true;
-        } else {
-            return false;
-        }
+      } else {
+        return false;
+      }
     }  
-
-  var myEventName = $('#eventName').val();
-  var myLocation = $('#location').val();
-  var myDateAndTime = $('#dateAndTime').val();
-  var myDescription = $('#description').val();
-  var myGroup = $('#group').val();
-  var isValidGroup = false;
-  var temp = myGroup.split(","); //temp stores groups in an array seprated by ",".
-
-  groupRef.on('value', getAllMembers);
+    
+    var myEventName = $('#eventName').val();
+    var myLocation = $('#location').val();
+    var myDateAndTime = $('#dateAndTime').val();
+    var myDescription = $('#description').val();
+    var myGroup = $('#group').val();
+    var isValidGroup = false;
+    var temp = myGroup.split(","); //temp stores groups in an array seprated by ",".
+    
+    groupRef.on('value', getAllMembers);
     function getAllMembers(log){
-        var groups = log.val();
-        var groupArray = Object.keys(groups);
-    for(var i = 0; i < groupArray.length; i++){
+      var groups = log.val();
+      var groupArray = Object.keys(groups);
+      for(var i = 0; i < groupArray.length; i++){
         var k = groupArray[i];
         var myGroupMembers = groups[k].groupMembers;
         var myGroupName = groups[k].groupName;
         console.log(myGroupName);
         
         for(var j = 0; j <  temp.length; j++){
-            console.log(temp);
-            if(temp[j] == myGroupName){
-                groupMembersArray.push(myGroupMembers);
-            }
+          console.log(temp);
+          if(temp[j] == myGroupName){
+            groupMembersArray.push(myGroupMembers);
+          }
         }
-    }
-} 
+      }
+    } 
     if (isValidGroups(temp)){
-           root.push().set({
-                Event_Name: myEventName,
-                Location: myLocation,
-                DateAndTime : myDateAndTime,
-                Description: myDescription,
-                Group: myGroup,
-                AllMembers : groupMembersArray
-  })
-  alert("Event successfully created!");
-     } else {
-         alert("Cannot find group(s)! Please check and invite group(s) again!");
-     }
+      root.push().set({
+        Event_Name: myEventName,
+        Location: myLocation,
+        DateAndTime : myDateAndTime,
+        Description: myDescription,
+        Group: myGroup,
+        AllMembers : groupMembersArray
+      })
+      alert("Event successfully created!");
+    } else {
+      alert("Cannot find group(s)! Please check and invite group(s) again!");
+    }
+  });
 });
-    });
          
          
 

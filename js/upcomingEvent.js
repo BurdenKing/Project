@@ -17,18 +17,18 @@ var ref = database.ref().child('events');
 var now = new Date().valueOf();
 
 ref.on('value',getData);
-  function getData(data){
-    var events = data.val();
-    var eventsArray = Object.keys(events);    
+function getData(data){
+  var events = data.val();
+  var eventsArray = Object.keys(events);    
 
-for(var i = 0; i < eventsArray.length; i++){
+  for(var i = 0; i < eventsArray.length; i++){
 
     var AllMembersArray = [];
 
-    //Array for all keys under child 'events'.
+  //Array for all keys under child 'events'.
     var k = eventsArray[i];
 
-    //loop through all keys in events and store different fields.
+  //loop through all keys in events and store different fields.
     var myEventName = events[k].Event_Name;
     var myDateAndTime = events[k].DateAndTime;
     var myLocation = events[k].Location;
@@ -41,33 +41,33 @@ for(var i = 0; i < eventsArray.length; i++){
     AllMembersArray.push(myAttendees);
 
     for (var j = 0; j < AllMembersArray.length; j++){
-        console.log(AllMembersArray[j]);
-        if((AllMembersArray[j].join().includes(myUser)) && (Date.parse(myDateAndTime) >= now )){
+      console.log(AllMembersArray[j]);
+      if((AllMembersArray[j].join().includes(myUser)) && (Date.parse(myDateAndTime) >= now )){
 
-    //construct body part. 
-    var li = document.createElement('div');
-            li.innerHTML = myEventName + "<br/>"
-                         + "Date and Time : " + myDateAndTime + "<br/>"
-                         + "Location : " + myLocation + "<br/>"
-                         + "Description : " + myDescription + "<br/>"
-                         + "Group(s) : " + myGroup + "<br/>"
-                         + "Attendees :" + myAttendees + "<br/>"
+      //construct body part. 
+        var li = document.createElement('div');
+        li.innerHTML = myEventName + "<br/>"
+                      + "Date and Time : " + myDateAndTime + "<br/>"
+                      + "Location : " + myLocation + "<br/>"
+                      + "Description : " + myDescription + "<br/>"
+                      + "Group(s) : " + myGroup + "<br/>"
+                      + "Attendees :" + myAttendees + "<br/>"
 
-    li.setAttribute("id","bodyNodes");
-    document.body.appendChild(li);  
+        li.setAttribute("id","bodyNodes");
+        document.body.appendChild(li);  
 
-    var voteButton = document.createElement('button');
-            voteButton.innerHTML ="This event is lit!";
-            voteButton.setAttribute("id","voteButton");
-            document.body.appendChild(voteButton);
+        var voteButton = document.createElement('button');
+        voteButton.innerHTML ="This event is lit!";
+        voteButton.setAttribute("id","voteButton");
+        document.body.appendChild(voteButton);
 
-    voteButton.onclick = function(){
-            console.log("called");
-            ref.child("" + k + "/VoteCount").set(myVoteCount + 1);
-            window.location = "./result.html?username=" + myUser;
-            };
-        }
+        voteButton.onclick = function(){
+          console.log("called");
+          ref.child("" + k + "/VoteCount").set(myVoteCount + 1);
+          window.location = "./result.html?username=" + myUser;
+        };
+      }
     }   
-    }
   }
+}
    
