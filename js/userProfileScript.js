@@ -19,6 +19,7 @@ root.on('value', function(snap){
     }
   }) 
 })
+
 function editPage(){
   var myURL = window.location.href;
   var myUserURL = myURL.split("?");
@@ -26,6 +27,7 @@ function editPage(){
   var myUser = userNameString[1];
   window.location = "./edit/editPage.html?username=" + myUser;
 }
+
 function groupPage(){
   var myURL = window.location.href;
   var myUserURL = myURL.split("?");
@@ -33,6 +35,7 @@ function groupPage(){
   var myUser = userNameString[1];
   window.location = "./groups/groupHome.html?username=" + myUser;
 }
+
 function eventPage(){
   var myURL = window.location.href;
   var myUserURL = myURL.split("?");
